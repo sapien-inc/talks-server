@@ -1,0 +1,13 @@
+h1 {
+  text-shadow: white 0px 0px 2px;
+  text-align: center;
+  line-height: 400px;
+  font-size: 400%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#crane {
+  position:fixed;
+  left:580px;
+  bottom:200px;
+}

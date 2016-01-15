@@ -1,0 +1,15 @@
+.navbar-default .navbar-nav > li > a:hover {
+  border-bottom-color: #ffffff;
+  color: #00A000;
+}
+
+.navbar-default .navbar-left {
+  font-size: 150%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.navbar-default .navbar-right {
+  font-size: 150%;
+  padding-right: 40px;
+}
