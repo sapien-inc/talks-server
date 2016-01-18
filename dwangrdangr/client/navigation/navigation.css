@@ -13,3 +13,20 @@
   font-size: 150%;
   padding-right: 40px;
 }
+
+input[type=submit] {
+  padding:7px 15px;
+  background:#0000FF;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #269abc;
+  text-align:center;
+}
+
+.form-control {
+  padding: 20px 20px;
+  margin-bottom: 10px;
+}

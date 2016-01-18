@@ -1,10 +1,32 @@
 <template name="mainpage">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        {{>suggestedArticles}}
+      </div>
+      <div class="col-sm-4">
+        {{>mainArticle}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="suggestedArticles">
   <div class="container" id="article-list">
     <h2>Suggested Articles</h2>
     <div class="list-group">
-      <a href="#" class="list-group-item">First item</a>
-      <a href="#" class="list-group-item">Second item</a>
-      <a href="#" class="list-group-item">Third item</a>
+      {{#each suggested_articles}}
+        <a id="{{this.url}}" class="list-group-item">{{this.title}}</a>
+      {{/each}}
     </div>
+  </div>
+</template>
+
+<template name="mainArticle">
+  <h3 class="article-title">{{current_title}}</h3>
+  <div class="container" id="article-body">
+    <p class="main-article">
+      {{{article_body}}}
+    </p>
   </div>
 </template>

@@ -1,5 +1,16 @@
 #article-list {
-  width: 40%;
+  width: 130%;
   position:relative;
-  right:450px
+  right:100px;
+  bottom: 25px;
+}
+
+p.main-article {
+  width:800px;
+}
+
+h3.article-title {
+  width: 800px;
+  position: relative;
+  left: 100px;
 }

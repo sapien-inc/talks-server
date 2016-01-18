@@ -7,7 +7,7 @@ h1 {
 }
 
 #crane {
-  position:fixed;
-  left:580px;
-  bottom:200px;
+  position:relative;
+  left:430px;
+  bottom:150px;
 }
