@@ -3,7 +3,6 @@ UserPrefs = new Mongo.Collection('user_prefs');
 initUserPrefs = function(userId){
   var prefs = {};
   prefs.userId = userId;
-
   prefs.topKeywords = [];
   prefs.topSources = [];
   prefs.topAuthors = [];
@@ -14,9 +13,21 @@ initUserPrefs = function(userId){
 
 //Set the user top lists
 setUserTops = function(userId, topKeywords, topSources, topAuthors){
-  UserPrefs.update(userId,{$set:{
+  var result = UserPrefs.update(userId,{$set:{
     topKeywords:topKeywords,
     topSources:topSources,
     topAuthors:topAuthors
   }});
+    return result;
+};
+
+initUserPrefsWithTops = function(userId, topKeywords, topSources, topAuthors){
+    var prefs = {};
+    prefs.userId = userId;
+    prefs.topKeywords = topKeywords;
+    prefs.topSources = topSources;
+    prefs.topAuthors = topAuthors;
+
+    var prefId = UserPrefs.insert(prefs);
+    return prefId;
 };

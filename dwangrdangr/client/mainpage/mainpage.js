@@ -6,7 +6,7 @@ if (Meteor.isClient) {
   Tracker.autorun(function() {
     Meteor.subscribe('current');
 
-    Meteor.call('getAllArticles',function(err,res){
+    Meteor.call('getSortedArticles',function(err,res){
       if (err){
         throw err
       }

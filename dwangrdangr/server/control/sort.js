@@ -1,17 +1,29 @@
 /**
  * Created by abe707 on 1/15/16.
  */
-var calculateArticleScore= function (userId, article) {
-  var prefs = UserPrefs.findOne({userId:userId});
+var calculateArticleScore= function (prefs, article) {
+
+    if(typeof article.keywords == 'undefined')
+        article.keywords = [];
+
+    console.log("-----------------------Prefs----------------------------");
+    console.log(prefs);
+
+    console.log("-----------------------Article----------------------------");
+    console.log(article);
+
+
 
   var score = 0;
   score += getDeltaScore(article.keywords, prefs.topKeywords, KEYWORD_PREF_MULTIPLIER);
   score += getDeltaScore([article.author], prefs.topAuthors, AUTHOR_PREF_MULTIPLIER);
   score += getDeltaScore([article.source], prefs.topSources, SOURCE_PREF_MULTIPLIER);
-
   score += getDeltaScore(article.keywords, getHotKeyWords(), KEYWORD_HOT_MULTIPLIER);
   score += getDeltaScore([article.source], getHotSites(), SOURCE_HOT_MULTIPLIER);
 
+    console.log("-----------------------Score----------------------------");
+
+    console.log(score);
   return score;
 };
 
@@ -32,10 +44,15 @@ var getDeltaScore = function (articleList, prefsList, multiplier) {
 
 sortArticles = function(userId, articles){
   var score = {};
+  var prefs = UserPrefs.findOne({userId:userId});
+
 
   articles.forEach(function (article) {
-    score[article._id] = calculateArticleScore(userId, article);
+    score[article._id] = calculateArticleScore(prefs, article);
   });
+
+
+
 
   articles.sort(function(articleA, articleB){
     return score[articleB._id] - score[articleA._id];

@@ -37,6 +37,10 @@ if (Meteor.isClient) {
         }
         else{
           $("#modal-login").modal('hide');
+          Meteor.call('notifyUserLogin', function(err){
+            console.log("notify user login");
+            if(err) console.log(err);
+          });
           Router.go('/mainpage')
         }
       });

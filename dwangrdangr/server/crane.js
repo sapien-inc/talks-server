@@ -11,8 +11,22 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 
+  notifyUserLogin:function(){
+      //var topKeyWords = [key2,key1,key4];
+      //var topAuthors = [name5, name1];
+      //var topSources = [site1,site4];
+      //var prefID = initUserPrefsWithTops(Meteor.userId(), topKeyWords, topSources, topAuthors);
+      //console.log("pref id: " + prefID );
+  },
+
   getAllArticles: function(){
     var articles = Articles.find().fetch();
+    return articles;
+  },
+
+  getSortedArticles: function(){
+    var articles = Articles.find().fetch();
+    sortArticles(Meteor.userId(), articles);
     return articles;
   },
 
@@ -35,4 +49,4 @@ Meteor.methods({
   }
 
 
-})
+});

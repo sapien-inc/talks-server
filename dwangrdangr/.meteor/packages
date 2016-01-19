@@ -22,7 +22,6 @@ accounts-ui
 accounts-password
 twbs:bootstrap
 semantic:ui
-user-session
 accounts-base
 sacha:spin
 generalledger:sleepforms
