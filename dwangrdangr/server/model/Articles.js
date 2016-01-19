@@ -10,7 +10,8 @@ getArticlesByTerm = function (term) {
   });
   regex = regex.slice(0,-1);
   regex+=")/";
-  var articles = Articles.find({title:regex, author:regex, keywords:regex, source:regex}).fetch();
+  var articles = Articles.find({title:regex, authors:regex, keywords:regex, source:regex}).fetch();
+  return articles;
 };
 
 //TODO ask harry to save everything in lower case

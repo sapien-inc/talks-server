@@ -1,22 +1,19 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
+ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish("current", function () {
-    return Current.find();
-  });
+  //Meteor.publish("current", function () {
+  //  return Current.find();
+  //});
 }
 
 Meteor.methods({
 
-  notifyUserLogin:function(){
-      //var topKeyWords = [key2,key1,key4];
-      //var topAuthors = [name5, name1];
-      //var topSources = [site1,site4];
-      //var prefID = initUserPrefsWithTops(Meteor.userId(), topKeyWords, topSources, topAuthors);
-      //console.log("pref id: " + prefID );
+  likeArticle: function(articleID){
+    addLike(Meteor.userId(),articleID);
   },
 
   getAllArticles: function(){
@@ -32,6 +29,12 @@ Meteor.methods({
 
   getCurrentArticle: function(){
     var article = Current.findOne();
+    return article;
+  },
+
+  getArticleById: function(id){
+    objId = new ObjectId(id);
+    var article = Articles.findOne({_id:objId});
     return article;
   },
 
