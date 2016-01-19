@@ -1,0 +1,91 @@
+<template name="navigation">
+  <div class="navbar navbar-default">
+    <div class="navbar-inner">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="{{pathFor 'home'}}">Home</a></li>
+        <li><a href="{{pathFor 'about'}}">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+        <li><a href="{{pathFor 'mainpage'}}">News Feed</a></li>
+        <li><a class="cd-main" data-toggle="modal" data-target="#modal-logged-in" >{{currentUser.username}}</a></li>
+        {{else}}
+          <li><a class="cd-signin" data-toggle="modal" data-target="#modal-login">Sign in</a></li>
+          <li><a class="cd-signup" data-toggle="modal" data-target="#modal-signup">Register</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-signup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign Up!</h4>
+        </div>
+        <div class="modal-body">
+          {{>register}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Log In</h4>
+        </div>
+        <div class="modal-body">
+          {{>login}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-logged-in" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign Up!</h4>
+        </div>
+        <div class="modal-body">
+          {{>dashboard}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="register">
+  <form>
+    <input type="text" class="form-control" name="registerUsername"  placeholder="Register Username">
+    <input type="password" class="form-control" name="registerPassword"  placeholder="Enter Password">
+    <input type="submit" value="Register">
+  </form>
+</template>
+
+<template name="login">
+  <form>
+    <input type="text" class="form-control" name="loginUsername" placeholder="Enter Username">
+    <input type="password" class="form-control" name="loginPassword" placeholder="Enter Password">
+    <input type="submit" value="Login">
+  </form>
+</template>
+
+<template name="dashboard">
+  <p>You are currently logged in as {{currentUser.username}}.</p>
+  <p><a class="logout">Logout</a></p>
+</template>
