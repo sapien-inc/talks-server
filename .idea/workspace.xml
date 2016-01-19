@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95651f91-be63-4a31-886c-343a882b7c34" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/paper-crane.iml" afterPath="$PROJECT_DIR$/.idea/paper-crane.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/.meteor/packages" afterPath="$PROJECT_DIR$/dwangrdangr/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/.meteor/versions" afterPath="$PROJECT_DIR$/dwangrdangr/.meteor/versions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/client/mainpage/mainpage.js" afterPath="$PROJECT_DIR$/dwangrdangr/client/mainpage/mainpage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/client/navigation/navigation.js" afterPath="$PROJECT_DIR$/dwangrdangr/client/navigation/navigation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/server/control/sort.js" afterPath="$PROJECT_DIR$/dwangrdangr/server/control/sort.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/server/crane.js" afterPath="$PROJECT_DIR$/dwangrdangr/server/crane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/server/model/Articles.js" afterPath="$PROJECT_DIR$/dwangrdangr/server/model/Articles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/server/model/Info.js" afterPath="$PROJECT_DIR$/dwangrdangr/server/model/Info.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dwangrdangr/server/model/UserPrefs.js" afterPath="$PROJECT_DIR$/dwangrdangr/server/model/UserPrefs.js" />
     </list>
     <ignored path="paper-crane.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="Tops.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dwangrdangr/server/control/Tops.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="57" column="2" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -111,8 +98,8 @@
       <file leaf-file-name="sort.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dwangrdangr/server/control/sort.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2">
-              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.27272728">
+              <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -274,6 +261,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paper-crane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PaperCrane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dwangrdangr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -687,14 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dwangrdangr/server/control/Tops.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="2" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dwangrdangr/server/model/Constants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16613925">
@@ -706,7 +707,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -783,10 +784,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dwangrdangr/server/control/Tops.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="2" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dwangrdangr/server/control/sort.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.27272728">
+          <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
           <folding />
         </state>
       </provider>

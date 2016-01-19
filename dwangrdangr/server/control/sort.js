@@ -6,12 +6,6 @@ var calculateArticleScore= function (prefs, article) {
     if(typeof article.keywords == 'undefined')
         article.keywords = [];
 
-    console.log("-----------------------Prefs----------------------------");
-    console.log(prefs);
-
-    console.log("-----------------------Article----------------------------");
-    console.log(article);
-
 
 
   var score = 0;
@@ -20,10 +14,6 @@ var calculateArticleScore= function (prefs, article) {
   score += getDeltaScore([article.source], prefs.topSources, SOURCE_PREF_MULTIPLIER);
   score += getDeltaScore(article.keywords, getHotKeyWords(), KEYWORD_HOT_MULTIPLIER);
   score += getDeltaScore([article.source], getHotSites(), SOURCE_HOT_MULTIPLIER);
-
-    console.log("-----------------------Score----------------------------");
-
-    console.log(score);
   return score;
 };
 
