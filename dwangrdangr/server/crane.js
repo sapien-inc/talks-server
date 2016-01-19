@@ -1,6 +1,13 @@
-Articles = new Mongo.Collection('articles');
+//Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
 
+
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish("current", function () {
+    return Current.find();
+  });
+}
 
 Meteor.methods({
 
@@ -20,7 +27,6 @@ Meteor.methods({
     new Fiber(function() {
       var file_path = "/Users/harrisonwang/Desktop/6.184/paper-crane/python/get-article.py " + url;
       childProcess.exec("python3 " + file_path, function(error, stdout, stderr) {
-        console.log("asfds")
         if (error) console.log('a '+error);
         if (stdout) console.log('b '+stdout);
         if (stderr) console.log('c '+stderr);

@@ -7,7 +7,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if currentUser}}
-          <li><a class="cd-main" data-toggle="modal" data-target="#modal-logged-in" >{{currentUser.username}}</a></li>
+        <li><a href="{{pathFor 'mainpage'}}">News Feed</a></li>
+        <li><a class="cd-main" data-toggle="modal" data-target="#modal-logged-in" >{{currentUser.username}}</a></li>
         {{else}}
           <li><a class="cd-signin" data-toggle="modal" data-target="#modal-login">Sign in</a></li>
           <li><a class="cd-signup" data-toggle="modal" data-target="#modal-signup">Register</a></li>

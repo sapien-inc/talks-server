@@ -1,16 +1,25 @@
 .navbar-default .navbar-nav > li > a:hover {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #269abc;
   color: #00A000;
 }
 
+.navbar {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  margin-bottom: 0px;
+  /*background:  url('/beige.jpg') no-repeat left top;*/
+  background-color: black;
+  border-color: transparent;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  height: 20px;
+}
+
 .navbar-default .navbar-left {
-  font-size: 150%;
   padding-right: 10px;
   padding-left: 10px;
 }
 
 .navbar-default .navbar-right {
-  font-size: 150%;
   padding-right: 40px;
 }
 

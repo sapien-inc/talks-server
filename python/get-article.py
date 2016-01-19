@@ -13,9 +13,11 @@ def storeHTML(url):
 	a.download()
 	a.parse()
 	html = a.article_html
+	title = a.title
 
 	mongoHash = {
-		"html" : html
+		"html" : html,
+		"title" : title
 	}
 
 	database.current.remove({})
