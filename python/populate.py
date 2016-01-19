@@ -2,25 +2,41 @@ import newspaper
 from newspaper import Article
 from pymongo import MongoClient
 
-# print("dfdsf")
-
 client = MongoClient('mongodb://127.0.0.1:3001')
-
 database = client.meteor
 
-cnn_paper = newspaper.build('http://cnn.com', memoize_articles=False)
+urls = newspaper.popular_urls()[0:10]
 
-articles = cnn_paper.articles[0:30]
+articles = []
+
+print(urls)
+
+for url in urls:
+	try:
+		paper = newspaper.build(url, memoize_articles=False)
+		for a in paper.articles[0:10]:
+			article = Article(a.url, keep_article_html=True)
+			article.source = url
+			articles.append(article)
+	except:
+		print(url);
+	
+
+
 
 def scrapeArticle(article):
 	article.download()
 	article.parse()
+	html = article.article_html
 	mongoHash = {
+		"source" : article.source,
 		"url" : article.url,
 		"authors": article.authors,
-		"title": article.title
+		"title": article.title,
+		"html": html
+		#"keywords": keywords
 	}
-	database.articles.insert(mongoHash)
+	#database.articles.insert(mongoHash)
 
 for article in articles:
 	scrapeArticle(article)

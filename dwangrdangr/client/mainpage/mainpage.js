@@ -1,10 +1,10 @@
 if (Meteor.isClient) {
 
-  Current = new Meteor.Collection('current');
+  //Current = new Meteor.Collection('current');
 
 
   Tracker.autorun(function() {
-    Meteor.subscribe('current');
+    //Meteor.subscribe('current');
 
     Meteor.call('getAllArticles',function(err,res){
       if (err){
@@ -35,20 +35,21 @@ if (Meteor.isClient) {
 
     current_title: function() {
       return Session.get('currentTitle');
-    },
-
-    database_updated:function(){
-      var sessionTitle = Session.get('currentTitle');
-      //Meteor._sleepForMs(1);
-      var article = Current.findOne();
-      if (!article){
-        article = '';
-      }
-      var articleTitle = article.title;
-      Session.set('currentArticle',article);
-      //var articleTitle = Session.get('currentArticle').title;
-      return sessionTitle == articleTitle;
     }
+
+    //
+    //database_updated:function(){
+    //  var sessionTitle = Session.get('currentTitle');
+    //  //Meteor._sleepForMs(1);
+    //  var article = Current.findOne();
+    //  if (!article){
+    //    article = '';
+    //  }
+    //  var articleTitle = article.title;
+    //  Session.set('currentArticle',article);
+    //  //var articleTitle = Session.get('currentArticle').title;
+    //  return sessionTitle == articleTitle;
+    //}
   });
 
   //Template.mainArticle.onCreated(function () {
@@ -58,6 +59,11 @@ if (Meteor.isClient) {
 
   (function() {
 
+    $(document).on('click','.btn-like',function(e){
+      var articleID = Session.get('currentArticle')._id;
+      Meteor.call('likeArticle', articleID);
+    })
+
     $(document).on('click','.list-group-item', function(e){
       // Get rid of any and all other active list-group-items
       $(this).parent().children().removeClass("active");
@@ -66,13 +72,17 @@ if (Meteor.isClient) {
       $(this).addClass("active");
 
       var title = e.target.innerHTML;
-      var url = e.target.id;
-      Meteor.call('callPy', url, function(err,res){
-        if (err){
-          throw err
-        }
-        Session.set('currentTitle',title);
+      Session.set('currentTitle', title);
+      var id = e.target.id;
+      Meteor.call('getArticleById', id, function(err,res){
+        Session.set('currentArticle', res);
       });
+      //Meteor.call('callPy', url, function(err,res){
+      //  if (err){
+      //    throw err
+      //  }
+      //  Session.set('currentTitle',title);
+      //});
     });
   })();
 

@@ -1,15 +1,22 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
+ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish("current", function () {
-    return Current.find();
-  });
+  //Meteor.publish("current", function () {
+  //  return Current.find();
+  //});
 }
 
 Meteor.methods({
+
+  likeArticle: function(articleID){
+    console.log(articleID)
+    console.log(Meteor.userId());
+    addLike(Meteor.userId(),articleID);
+  },
 
   getAllArticles: function(){
     var articles = Articles.find().fetch();
@@ -18,6 +25,12 @@ Meteor.methods({
 
   getCurrentArticle: function(){
     var article = Current.findOne();
+    return article;
+  },
+
+  getArticleById: function(id){
+    objId = new ObjectId(id);
+    var article = Articles.findOne({_id:objId});
     return article;
   },
 

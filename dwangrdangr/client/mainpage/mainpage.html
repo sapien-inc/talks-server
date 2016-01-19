@@ -16,21 +16,23 @@
     <h2 id="suggested-header">Suggested Articles</h2>
     <div class="list-group">
       {{#each suggested_articles}}
-        <a id="{{this.url}}" class="list-group-item">{{this.title}}</a>
+        <a id="{{this._id.valueOf}}" class="list-group-item">{{this.title}}</a>
       {{/each}}
     </div>
   </div>
 </template>
 
 <template name="mainArticle">
-    <h3 class="article-title">{{current_title}}</h3>
-    <div class="container" id="article-body">
+  <h3 class="article-title">{{current_title}}</h3>
+  <button type="button" class="btn-like">Like</button>
+  <div class="container" id="article-body">
       <p class="main-article">
-          {{#if database_updated}}
-            {{{article_body}}}
-          {{else}}
-            {{>spinner}}
-          {{/if}}
+        {{{article_body}}}
+          <!--{{#if database_updated}}-->
+            <!--{{{article_body}}}-->
+          <!--{{else}}-->
+            <!--{{>spinner}}-->
+          <!--{{/if}}-->
       </p>
     </div>
 </template>
