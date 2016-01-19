@@ -6,7 +6,7 @@ var calculateArticleScore= function (userId, article) {
 
   var score = 0;
   score += getDeltaScore(article.keywords, prefs.topKeywords, KEYWORD_PREF_MULTIPLIER);
-  score += getDeltaScore([article.author], prefs.topAuthors, AUTHOR_PREF_MULTIPLIER);
+  score += getDeltaScore(article.authors, prefs.topAuthors, AUTHOR_PREF_MULTIPLIER);
   score += getDeltaScore([article.source], prefs.topSources, SOURCE_PREF_MULTIPLIER);
 
   score += getDeltaScore(article.keywords, getHotKeyWords(), KEYWORD_HOT_MULTIPLIER);

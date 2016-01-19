@@ -13,7 +13,7 @@
 
 <template name="suggestedArticles">
   <div class="container" id="article-list">
-    <h2>Suggested Articles</h2>
+    <h2 id="suggested-header">Suggested Articles</h2>
     <div class="list-group">
       {{#each suggested_articles}}
         <a id="{{this.url}}" class="list-group-item">{{this.title}}</a>

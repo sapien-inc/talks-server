@@ -3,13 +3,18 @@
  */
 Info = new Mongo.Collection('info');
 
+
+
 //this should be done by python on startup so that it updates the info objects
-var HOT_KEYWORDS = Info.insert({list:[]});
-var HOT_SITES = Info.insert({list:[]});
+
 
 getHotKeyWords = function(){
-  var info = Info.findOne({_id: HOT_KEYWORDS});
-  return info.list;
+  var infos = Info.find({}).fetch();
+  var hot_keywords = [];
+  infos.forEach(function(info){
+    hot_keywords = info.hotKeywords;
+  });
+  return hot_keywords
 };
 
 getHotSites = function(){

@@ -2,6 +2,8 @@ import newspaper
 from newspaper import Article
 from pymongo import MongoClient
 
+# print("dfdsf")
+
 client = MongoClient('mongodb://127.0.0.1:3001')
 
 database = client.meteor
