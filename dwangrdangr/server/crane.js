@@ -1,6 +1,6 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
-ObjectId = Npm.require('mongodb').ObjectID;
+//ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
@@ -13,7 +13,10 @@ if (Meteor.isServer) {
 Meteor.methods({
 
   likeArticle: function(articleID){
-    addLike(Meteor.userId(),articleID);
+    var like = addLike(Meteor.userId(),articleID);
+      console.log("like :" +like);
+      calculateTops(Meteor.userId());
+      return like;
   },
 
   getAllArticles: function(){
@@ -33,8 +36,11 @@ Meteor.methods({
   },
 
   getArticleById: function(id){
-    objId = new ObjectId(id);
-    var article = Articles.findOne({_id:objId});
+    //objId = new ObjectId(id);
+    //var article = Articles.findOne({_id:objId});
+      console.log(id);
+      var article = Articles.findOne({_id:id});
+      console.log(article);
     return article;
   },
 

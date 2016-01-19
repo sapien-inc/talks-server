@@ -7,7 +7,8 @@ calculateTops = function(userId){
   var sourceCounts = {};
   var authorCounts = {};
   likes.forEach(function (like) {
-    var article = Articles.findOne({_id:like.articleId},{content:0});
+    var article = Articles.findOne({_id:like.articleId});
+      console.log(article);
     article.keywords.forEach(function(word){
       if(keywords.hasOwnProperty(word)) keywords[word] = keywords[word] + 1;
       else keywords[word] = 1;
