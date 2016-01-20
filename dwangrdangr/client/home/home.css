@@ -1,16 +1,20 @@
 h1 {
   text-shadow: white 0px 0px 2px;
+  line-height: 53px;
+  position:absolute;
+  left: 570px;
+  top: 200px;
   text-align: center;
-  line-height: 300px;
   font-size: 450%;
   font-family: 'Playfair Display', serif;
-  color: maroon;
+  width:250px;
+  color: black;
 }
 
 #crane {
   position:absolute;
-  left:580px;
-  bottom:350px;
+  left:620px;
+  bottom:520px;
 }
 
 #homescreen {
