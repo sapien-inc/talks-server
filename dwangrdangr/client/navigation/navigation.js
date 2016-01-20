@@ -20,7 +20,12 @@ if (Meteor.isClient) {
         }
         else {
             $("#modal-signup").modal('hide');
-            Router.go('/mainpage')
+          Meteor.call('notifyUserRegister', function(err){
+            console.log("notify user login");
+            if(err) console.log(err);
+            else
+              Router.go('/mainpage')
+          });
         }
       });
     }
@@ -37,11 +42,7 @@ if (Meteor.isClient) {
         }
         else{
           $("#modal-login").modal('hide');
-          Meteor.call('notifyUserLogin', function(err){
-            console.log("notify user login");
-            if(err) console.log(err);
-          });
-          Router.go('/mainpage')
+
         }
       });
     }

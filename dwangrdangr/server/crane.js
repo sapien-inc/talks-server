@@ -1,6 +1,6 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
-//ObjectId = Npm.require('mongodb').ObjectID;
+ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
@@ -22,6 +22,11 @@ Meteor.methods({
       return articles;
   },
 
+  notifyUserRegister: function(){
+    var userId = Meteor.userId();
+    return initUserPrefsWithTops(userId,[],[],[]);
+  },
+
   getAllArticles: function(){
     var articles = Articles.find().fetch();
     return articles;
@@ -39,11 +44,11 @@ Meteor.methods({
   },
 
   getArticleById: function(id){
-    //objId = new ObjectId(id);
+    objId = new ObjectId(id);
     //var article = Articles.findOne({_id:objId});
-      console.log(id);
-      var article = Articles.findOne({_id:id});
-      console.log(article);
+    console.log(id);
+    var article = Articles.findOne({_id:objId});
+    console.log(article);
     return article;
   },
 

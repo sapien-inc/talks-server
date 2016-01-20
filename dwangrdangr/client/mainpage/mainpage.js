@@ -80,6 +80,8 @@ if (Meteor.isClient) {
       Session.set('currentTitle', title);
       var id = e.target.id;
       Meteor.call('getArticleById', id, function(err,res){
+        console.log(id);
+        console.log(res);
         Session.set('currentArticle', res);
       });
       //Meteor.call('callPy', url, function(err,res){
