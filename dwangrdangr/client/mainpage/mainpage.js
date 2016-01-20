@@ -60,9 +60,14 @@ if (Meteor.isClient) {
   (function() {
 
     $(document).on('click','.btn-like',function(e){
-      var articleID = Session.get('currentArticle')._id;
-      Meteor.call('likeArticle', articleID);
-    })
+      var curr = Session.get('currentArticle');
+      console.log(curr);
+      var articleID = curr._id;
+      Meteor.call('likeArticle', articleID, function(err, result){
+          if(err) console.log(err);
+          else Session.set('suggestedArticles', result);
+      });
+    });
 
     $(document).on('click','.list-group-item', function(e){
       // Get rid of any and all other active list-group-items

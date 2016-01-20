@@ -13,12 +13,13 @@ initUserPrefs = function(userId){
 
 //Set the user top lists
 setUserTops = function(userId, topKeywords, topSources, topAuthors){
-  var result = UserPrefs.update(userId,{$set:{
+  var result = UserPrefs.update({userId:userId},{$set:{
     topKeywords:topKeywords,
     topSources:topSources,
     topAuthors:topAuthors
   }});
-    return result;
+    var updated = UserPrefs.findOne({userId:userId});
+    return updated;
 };
 
 initUserPrefsWithTops = function(userId, topKeywords, topSources, topAuthors){

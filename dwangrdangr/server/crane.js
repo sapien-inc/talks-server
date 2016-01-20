@@ -14,9 +14,12 @@ Meteor.methods({
 
   likeArticle: function(articleID){
     var like = addLike(Meteor.userId(),articleID);
-      console.log("like :" +like);
-      calculateTops(Meteor.userId());
-      return like;
+      console.log(like);
+      var prefs = calculateTops(Meteor.userId());
+      console.log(prefs);
+      var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+      console.log(articles.length);
+      return articles;
   },
 
   getAllArticles: function(){

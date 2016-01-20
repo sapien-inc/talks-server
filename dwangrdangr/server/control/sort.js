@@ -14,6 +14,7 @@ var calculateArticleScore= function (prefs, article) {
   score += getDeltaScore([article.source], prefs.topSources, SOURCE_PREF_MULTIPLIER);
   score += getDeltaScore(article.keywords, getHotKeyWords(), KEYWORD_HOT_MULTIPLIER);
   score += getDeltaScore([article.source], getHotSites(), SOURCE_HOT_MULTIPLIER);
+
   return score;
 };
 
@@ -36,15 +37,15 @@ sortArticles = function(userId, articles){
   var score = {};
   var prefs = UserPrefs.findOne({userId:userId});
 
-
   articles.forEach(function (article) {
     score[article._id] = calculateArticleScore(prefs, article);
   });
 
 
 
-
   articles.sort(function(articleA, articleB){
     return score[articleB._id] - score[articleA._id];
   });
+
+    return articles;
 };
