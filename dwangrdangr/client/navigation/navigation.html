@@ -6,6 +6,7 @@
         <li><a href="{{pathFor 'about'}}">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li> {{>navsearch}} </li>
         {{#if currentUser}}
         <li><a href="{{pathFor 'mainpage'}}">News Feed</a></li>
         <li><a class="cd-main" data-toggle="modal" data-target="#modal-logged-in" >{{currentUser.username}}</a></li>

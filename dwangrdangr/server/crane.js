@@ -13,8 +13,6 @@ if (Meteor.isServer) {
 Meteor.methods({
 
   likeArticle: function(articleID){
-    console.log(articleID)
-    console.log(Meteor.userId());
     addLike(Meteor.userId(),articleID);
   },
 
