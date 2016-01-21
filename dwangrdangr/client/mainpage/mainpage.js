@@ -36,20 +36,6 @@ if (Meteor.isClient) {
         current_title: function () {
             return Session.get('currentTitle');
         }
-
-        //
-        //database_updated:function(){
-        //  var sessionTitle = Session.get('currentTitle');
-        //  //Meteor._sleepForMs(1);
-        //  var article = Current.findOne();
-        //  if (!article){
-        //    article = '';
-        //  }
-        //  var articleTitle = article.title;
-        //  Session.set('currentArticle',article);
-        //  //var articleTitle = Session.get('currentArticle').title;
-        //  return sessionTitle == articleTitle;
-        //}
     });
 
     //Template.mainArticle.onCreated(function () {
@@ -80,6 +66,8 @@ if (Meteor.isClient) {
             Session.set('currentTitle', title);
             var id = e.target.id;
             Meteor.call('getArticleById', id, function (err, res) {
+                console.log(id);
+                console.log(res);
                 Session.set('currentArticle', res);
             });
             //Meteor.call('callPy', url, function(err,res){
