@@ -3,16 +3,39 @@ Articles = new Mongo.Collection('articles');
 getArticlesByTerm = function (term) {
     term = term.toLowerCase();
     var words = term.split();
-    var regex = "/(";
+
+    var matchArrays = [];
+
     words.forEach(function (word) {
-        regex += word;
-        regex += "|";
+        var regex = "(.?)" + word + "(.?)";
+        var options = "ims";
+        var titleMatches = Articles.find({title: {$regex: regex, $options:options}}).fetch();
+        var authorMatches = Articles.find({authors: {$regex: regex, $options:options}}).fetch();
+        var keyWordMatches = Articles.find({keywords: {$regex: regex, $options:options}}).fetch();
+        var sourceMatches = Articles.find({source: {$regex: regex, $options:options}}).fetch();
+
+        matchArrays.push(titleMatches);
+        matchArrays.push(authorMatches);
+        matchArrays.push(keyWordMatches);
+        matchArrays.push(sourceMatches);
+
+        console.log(regex);
+        console.log(matchArrays);
     });
-    regex = regex.slice(0, -1);
-    regex += ")/";
-    console.log(regex);
-    var articles = Articles.find({title: regex, authors: regex, keywords: regex, source: regex}).fetch();
+
+    var articles = []
+
+    matchArrays.forEach(function(matches){
+        appendMatchesToArray(articles, matches);
+    });
+
     return articles;
+};
+
+var appendMatchesToArray = function (articles, matches) {
+    matches.forEach(function (match) {
+        articles.push(match);
+    });
 };
 
 //TODO ask harry to save everything in lower case

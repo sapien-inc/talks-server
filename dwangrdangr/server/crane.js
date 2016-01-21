@@ -21,10 +21,6 @@ Meteor.methods({
         console.log(articles.length);
         return articles;
     },
-
-    searchArticles: function (searchTerm) {
-        return getArticlesByTerm(searchTerm);
-    },
     notifyUserRegister: function () {
         var userId = Meteor.userId();
         return initUserPrefsWithTops(userId, [], [], []);
