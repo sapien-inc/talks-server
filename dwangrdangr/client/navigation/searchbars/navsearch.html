@@ -3,8 +3,13 @@
       <div class="form-group has-feedback">
         <label for="search" class="sr-only">Search</label>
         <input type="text" autocomplete="off" class="form-control" name="search"
-               id="search" placeholder="search articles">
+               id="search" placeholder="search articles" onkeyup="return searchFor(event)">
         <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          <script>
+              function searchFor(event){
+                  console.log('yeah');
+              }
+          </script>
       </div>
     </form>
 </template>
