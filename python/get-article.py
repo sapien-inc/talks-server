@@ -5,7 +5,6 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://127.0.0.1:3001')
 database = client.meteor
 
-
 #print(articles);
 
 def storeHTML(url):

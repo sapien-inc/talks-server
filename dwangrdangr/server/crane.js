@@ -1,24 +1,59 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
+//ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish("current", function () {
-    return Current.find();
-  });
+  //Meteor.publish("current", function () {
+  //  return Current.find();
+  //});
 }
 
 Meteor.methods({
+
+  likeArticle: function(articleID){
+    var like = addLike(Meteor.userId(),articleID);
+      console.log(like);
+      var prefs = calculateTops(Meteor.userId());
+      console.log(prefs);
+      var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+      console.log(articles.length);
+      return articles;
+  },
+
+  notifyUserRegister: function(){
+    var userId = Meteor.userId();
+    return initUserPrefsWithTops(userId,[],[],[]);
+  },
 
   getAllArticles: function(){
     var articles = Articles.find().fetch();
     return articles;
   },
 
+  getSortedArticles: function(){
+    var articles = Articles.find().fetch();
+    sortArticles(Meteor.userId(), articles);
+    return articles;
+  },
+
   getCurrentArticle: function(){
     var article = Current.findOne();
     return article;
+  },
+
+  getArticleById: function(articleId){
+    //objId = new ObjectId(id);
+    //var article = Articles.findOne({_id:objId});
+    var objId = new Mongo.ObjectID(articleId);
+    var article = Articles.findOne({_id:objId});
+    return article;
+  },
+
+  searchArticles: function(term){
+    var articles = getArticlesByTerm(term);
+    return articles;
   },
 
   callPy: function(url){
@@ -35,4 +70,4 @@ Meteor.methods({
   }
 
 
-})
+});
