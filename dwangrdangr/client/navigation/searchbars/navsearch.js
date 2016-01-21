@@ -1,8 +1,16 @@
-(function() {
+if (Meteor.isClient) {
 
-  $(document).on('onSearch','#search',function(e){
-    console.log("woah")
-  })
+  (function () {
 
-})();
+    $(document).on('click', '#search-button', function (e) {
+      var searchVal = $('#search-text')[0].value;
+      Meteor.call('searchArticles', searchVal, function(err,res){
+        console.log(err)
+        console.log(res);
+      })
+    })
+
+  })();
+
+}
 

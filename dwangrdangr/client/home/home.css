@@ -2,8 +2,8 @@ h1 {
   text-shadow: white 0px 0px 2px;
   line-height: 53px;
   position:absolute;
-  left: 570px;
-  top: 200px;
+  left: 41%;
+  top: 27.5%;
   text-align: center;
   font-size: 450%;
   font-family: 'Playfair Display', serif;
@@ -11,10 +11,16 @@ h1 {
   color: black;
 }
 
+#home-slogan {
+  font-size:100%;
+  position:relative;
+  top: 41%;
+}
+
 #crane {
   position:absolute;
-  left:620px;
-  bottom:520px;
+  left:635px;
+  top:18%
 }
 
 #homescreen {
@@ -28,3 +34,81 @@ h1 {
 
   left: 0px;
 }
+
+.form-signin
+{
+
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  font-family: 'Playfair Display', serif;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control
+{
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+  z-index: 2;
+}
+
+.form-signin input[type="text"]
+{
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"]
+{
+  margin-bottom: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#repeat-password
+{
+  margin-bottom: 8px;
+  margin-top:-9px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.new-account
+{
+  display: block;
+  margin-top: 10px;
+  color:grey;
+}
+
+#login-container {
+  position:relative;
+  top:38%;
+}
+
+#signup-container {
+  position:relative;
+  top:9.7%;
+  visibility:hidden;
+}
+
+#new-account{
+  cursor:pointer;
+}
+
+#already-have-account{
+  cursor:pointer;
+}
+

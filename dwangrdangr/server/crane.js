@@ -1,6 +1,6 @@
 //Articles = new Mongo.Collection('articles');
 Current = new Mongo.Collection('current');
-ObjectId = Npm.require('mongodb').ObjectID;
+//ObjectId = Npm.require('mongodb').ObjectID;
 
 
 if (Meteor.isServer) {
@@ -43,13 +43,17 @@ Meteor.methods({
     return article;
   },
 
-  getArticleById: function(id){
-    objId = new ObjectId(id);
+  getArticleById: function(articleId){
+    //objId = new ObjectId(id);
     //var article = Articles.findOne({_id:objId});
-    console.log(id);
+    var objId = new Mongo.ObjectID(articleId);
     var article = Articles.findOne({_id:objId});
-    console.log(article);
     return article;
+  },
+
+  searchArticles: function(term){
+    var articles = getArticlesByTerm(term);
+    return articles;
   },
 
   callPy: function(url){

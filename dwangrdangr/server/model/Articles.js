@@ -10,6 +10,7 @@ getArticlesByTerm = function (term) {
   });
   regex = regex.slice(0,-1);
   regex+=")/";
+  console.log(regex);
   var articles = Articles.find({title:regex, authors:regex, keywords:regex, source:regex}).fetch();
   return articles;
 };
