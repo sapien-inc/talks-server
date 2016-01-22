@@ -14,13 +14,21 @@ Meteor.methods({
 
     likeArticle: function (articleID) {
         var like = addLike(Meteor.userId(), articleID);
-        console.log(like);
         var prefs = calculateTops(Meteor.userId());
-        console.log(prefs);
         var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
-        console.log(articles.length);
+        var article = appendLikes(articles,Meteor.userId());
         return articles;
     },
+
+    unlikeArticle: function (articleID) {
+        var mongoId = new Mongo.ObjectID(articleID);
+        var like = removeLike(Meteor.userId(), mongoId);
+        var prefs = calculateTops(Meteor.userId());
+        var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+        var article = appendLikes(articles,Meteor.userId());
+        return articles;
+    },
+
     notifyUserRegister: function () {
         var userId = Meteor.userId();
         return initUserPrefsWithTops(userId, [], [], []);
@@ -35,12 +43,14 @@ Meteor.methods({
     getSortedArticles: function () {
         var articles = Articles.find().fetch();
         sortArticles(Meteor.userId(), articles);
-        return articles;
+        appendLikes(articles,Meteor.userId());
+        return articles.slice(0,25);
     },
+
     getArticleById: function (articleId) {
         //objId = new ObjectId(id);
-        //var article = Articles.findOne({_id:objId});
         var objId = new Mongo.ObjectID(articleId);
+        //var article = Articles.findOne({_id:objId});
         var article = Articles.findOne({_id: objId});
         return article;
     },

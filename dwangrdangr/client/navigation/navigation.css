@@ -1,14 +1,14 @@
 .navbar-default .navbar-nav > li > a:hover {
-  border-bottom-color: #269abc;
-  color: lightgoldenrodyellow;
+    border-bottom-color: #269abc;
+    color: lightgoldenrodyellow;
 }
 
 .navbar-default .navbar-nav > li > a:focus {
-  color:grey;
+    color: grey;
 }
 
 .navbar-default .navbar-nav > li > a:active {
-  color:grey;
+    color: grey;
 }
 
 .navbar-default .navbar-nav > li {
@@ -17,24 +17,24 @@
 }
 
 .navbar {
-  color:grey;
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  margin-bottom: 0px;
-  /*background:  url('/beige.jpg') no-repeat left top;*/
-  background-color: #333333;
-  border-color: transparent;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  height: 20px;
+    color: grey;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    margin-bottom: 0px;
+    /*background:  url('/beige.jpg') no-repeat left top;*/
+    background-color: #333333;
+    border-color: transparent;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 20px;
 }
 
 .navbar-default .navbar-left {
-  padding-right: 10px;
-  padding-left: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .navbar-default .navbar-right {
-  padding-right: 40px;
+    padding-right: 40px;
 }
 
 .navbar-default {
@@ -42,12 +42,12 @@
 }
 
 .form-control {
-  padding: 20px 20px;
-  margin-bottom: 10px;
+    padding: 20px 20px;
+    margin-bottom: 10px;
 }
 
 #username {
-  cursor:pointer;
+    cursor: pointer;
 }
 
 .dropdown-menu {

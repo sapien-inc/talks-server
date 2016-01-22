@@ -21,8 +21,34 @@ if (Meteor.isClient) {
                 articles = [];
             }
             return articles;
-        }
+        },
+
+        buttonStyle: function(articleId){
+            var articles = Session.get('suggestedArticles');
+            var color = "grey";
+            articles.forEach(function(article){
+
+                if(article._id.valueOf() === articleId){
+                    if(article.liked) {
+                        color = "orangered";
+                    }
+                }
+            });
+            return color;
+        },
+
+
     });
+
+    //Template.suggestedArticles.rendered = function(){
+    //    $('.list-group-item').popover({
+    //        title: 'New Letter',
+    //        content: function(){
+    //            console.log("hover");
+    //            return "content";
+    //        }
+    //    });
+    //};
 
     Template.mainArticle.helpers({
         article_body: function () {
@@ -32,7 +58,6 @@ if (Meteor.isClient) {
             }
             return article.html;
         },
-
         current_title: function () {
             var article = Session.get('currentArticle');
             if (!article) {
@@ -42,24 +67,39 @@ if (Meteor.isClient) {
         }
     });
 
+
+
     //Template.mainArticle.onCreated(function () {
     //  // Use this.subscribe inside onCreated callback
     //  this.subscribe("current");
     //});
 
     (function () {
-        $(document).on('click', '.btn-like', function (e) {
-            var curr = Session.get('currentArticle');
-            var articleID = curr._id;
-            Meteor.call('likeArticle', articleID, function (err, result) {
-                if (err) console.log(err);
-                else Session.set('suggestedArticles', result);
-            });
+        $(document).on('click', '.feed-heart', function (e) {
+            //var curr = Session.get('currentArticle');
+            console.log("www")
+            var articleID = e.target.attributes[0].nodeValue;
+            var style = e.target.attributes[2].nodeValue;
+            if(style.indexOf('grey') >=0){
+                Meteor.call('likeArticle', articleID, function (err, result) {
+                    if (err) {
+                        throw err;
+                    }
+                    else {
+                        Session.set('suggestedArticles', result.slice(0,25));
+                    }
+                });
+            }else{
+                Meteor.call('unlikeArticle', articleID, function (err, result) {
+                    if (err) console.log(err);
+                    else Session.set('suggestedArticles', result.slice(0,25));
+                });
+            }
         });
 
         $(document).on('click', '.list-group-item', function (e) {
             // Get rid of any and all other active list-group-items
-            $(this).parent().children().removeClass("active");
+            $('.list-group .active').removeClass('active');
 
             // Add the active class to this item
             $(this).addClass("active");
@@ -69,12 +109,6 @@ if (Meteor.isClient) {
             Meteor.call('getArticleById', id, function (err, res) {
                 Session.set('currentArticle', res);
             });
-            //Meteor.call('callPy', url, function(err,res){
-            //  if (err){
-            //    throw err
-            //  }
-            //  Session.set('currentTitle',title);
-            //});
         });
     })();
 

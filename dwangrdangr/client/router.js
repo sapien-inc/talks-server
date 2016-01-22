@@ -1,7 +1,6 @@
 Router.configure({
-  layoutTemplate:'layout'
+    layoutTemplate: 'layout'
 });
-
 Router.map(function(){
   this.route('about',{path:'/about'})
   this.route('home',{path:'/'})
