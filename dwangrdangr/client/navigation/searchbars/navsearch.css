@@ -43,8 +43,9 @@
 .search-form .form-group {
   float: right !important;
   transition: all 0.35s, border-radius 0s;
+  margin-top:2px;
   width: 32px;
-  height: 32px;
+  height: 30px;
   background-color: transparent;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
   border-radius: 25px;
@@ -58,6 +59,7 @@
   display:block;
 }
 .search-form .form-group input.form-control::-webkit-input-placeholder {
+  color: #grey;;
   display: none;
 }
 .search-form .form-group input.form-control:-moz-placeholder {
@@ -73,7 +75,7 @@
 }
 .search-form .form-group:hover,
 .search-form .form-group.hover {
-  width: 50%;
+  width: 100%;
   border-radius: 4px 25px 25px 4px;
 }
 .search-form .form-group span.form-control-feedback {
@@ -91,17 +93,16 @@
   font-size: 12px;
 }
 
-#searchForm{
-  position:relative;
-  left:24%;
-  margin-top:8px;
+#searchForm {
+  position: relative;
+  margin-top: 8px;
   text-align: center;
   color: white;
-
 }
 
 #search {
-   position:relative;
-   top: -5px;
-   text-align: left;
+  position: relative;
+  top: -5px;
+  text-align: left;
+  color: #cccccc;
 }
