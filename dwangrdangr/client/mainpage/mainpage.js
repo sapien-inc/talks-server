@@ -21,7 +21,21 @@ if (Meteor.isClient) {
                 articles = [];
             }
             return articles;
-        }
+        },
+
+        buttonStyle: function(articleId){
+            var articles = Session.get('suggestedArticles');
+            var color = "blue";
+            articles.forEach(function(article){
+                if(article._id === articleId){
+                    if(article.liked)
+                        color= "orangered";
+                }
+            });
+            return color;
+        },
+
+
     });
 
     //Template.suggestedArticles.rendered = function(){
@@ -42,10 +56,9 @@ if (Meteor.isClient) {
             }
             return article.html;
         },
-
-        current_title: function(){
+        current_title: function () {
             var article = Session.get('currentArticle');
-            if(!article){
+            if (!article) {
                 return "";
             }
             return article.title;
@@ -60,13 +73,22 @@ if (Meteor.isClient) {
     //});
 
     (function () {
-        $(document).on('click', '.btn-like', function (e) {
-            var curr = Session.get('currentArticle');
-            var articleID = curr._id;
-            Meteor.call('likeArticle', articleID, function (err, result) {
-                if (err) console.log(err);
-                else Session.set('suggestedArticles', result);
-            });
+        $(document).on('click', '.glyphicon-heart', function (e) {
+            //var curr = Session.get('currentArticle');
+            var articleID = e.target.attributes[0].nodeValue;
+            var style = e.target.attributes[2].nodeValue;
+            if(style.indexOf('blue') >=0){
+                Meteor.call('likeArticle', articleID, function (err, result) {
+                    if (err) console.log(err);
+                    else Session.set('suggestedArticles', result);
+                });
+            }else{
+                Meteor.call('unlikeArticle', articleID, function (err, result) {
+                    if (err) console.log(err);
+                    else Session.set('suggestedArticles', result);
+                });
+            }
+
         });
 
         $(document).on('click', '.list-group-item', function (e) {

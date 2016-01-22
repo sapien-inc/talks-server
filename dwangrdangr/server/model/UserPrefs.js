@@ -26,11 +26,10 @@ setUserTops = function (userId, topKeywords, topSources, topAuthors) {
 
 initUserPrefsWithTops = function (userId, topKeywords, topSources, topAuthors) {
     var prefs = {};
-    prefs.userId = userId;
+    prefs.userIdl = userId;
     prefs.topKeywords = topKeywords;
     prefs.topSources = topSources;
     prefs.topAuthors = topAuthors;
-
     var prefId = UserPrefs.insert(prefs);
     return prefId;
 };

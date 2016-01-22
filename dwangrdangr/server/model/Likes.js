@@ -1,6 +1,7 @@
 Likes = new Mongo.Collection('likes');
 
 addLike = function (userId, articleId) {
+    Likes.remove({articleId:articleId, userId:userId});
     var like = {};
     like.userId = userId;
     like.articleId = articleId;
@@ -18,10 +19,16 @@ getUserLikedArticles = function (userId) {
     return articles;
 };
 
-unlikeArticle = function(userId, articleId){
-    var likes = Likes.find({articleId:articleId}).fetch();
-    likes.forEach(function(like){
+removeLike = function(userId, articleId){
+    Likes.remove({articleId:articleId, userId:userId});
 
-    })
+};
 
+appendLikes = function(articles, userId){
+    articles.forEach(function(article){
+        var likes = Likes.find({articleId:article._id, userId:userId}).fetch();
+        article.liked = false;
+        likes.forEach(function(like){article.liked = true})
+    });
+    return articles;
 };

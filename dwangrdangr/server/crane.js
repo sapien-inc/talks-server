@@ -14,13 +14,20 @@ Meteor.methods({
 
     likeArticle: function (articleID) {
         var like = addLike(Meteor.userId(), articleID);
-        console.log(like);
         var prefs = calculateTops(Meteor.userId());
-        console.log(prefs);
         var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
-        console.log(articles.length);
+        var article = appendLikes(articles,Meteor.userId());
         return articles;
     },
+
+    unlikeArticle: function (articleID) {
+        var like = removeLike(Meteor.userId(), articleID);
+        var prefs = calculateTops(Meteor.userId());
+        var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+        var article = appendLikes(articles,Meteor.userId());
+        return articles;
+    },
+
     notifyUserRegister: function () {
         var userId = Meteor.userId();
         return initUserPrefsWithTops(userId, [], [], []);
@@ -35,8 +42,10 @@ Meteor.methods({
     getSortedArticles: function () {
         var articles = Articles.find().fetch();
         sortArticles(Meteor.userId(), articles);
+        appendLikes(articles,Meteor.userId());
         return articles;
     },
+
     getArticleById: function (articleId) {
         console.log("ID:" + articleId);
         //objId = new ObjectId(id);
