@@ -1,0 +1,14 @@
+h5{
+  font-size:150%;
+  color:#333333;
+  font-family:	"Courier New", Courier, monospace;
+}
+
+.panel-title{
+  font-size: 93%;
+  margin:5px;
+}
+
+.panel-default{
+  width: 80%
+}

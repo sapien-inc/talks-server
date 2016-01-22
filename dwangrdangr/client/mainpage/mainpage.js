@@ -31,6 +31,14 @@ if (Meteor.isClient) {
                 return "";
             }
             return article.html;
+        },
+
+        current_title: function () {
+            var article = Session.get('currentArticle');
+            if (!article) {
+                return "";
+            }
+            return article.title;
         }
     });
 
@@ -60,7 +68,6 @@ if (Meteor.isClient) {
 
             Meteor.call('getArticleById', id, function (err, res) {
                 Session.set('currentArticle', res);
-                Session.set('currentTitle', res.title);
             });
             //Meteor.call('callPy', url, function(err,res){
             //  if (err){
