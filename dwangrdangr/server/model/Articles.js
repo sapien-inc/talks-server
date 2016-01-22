@@ -13,15 +13,17 @@ getArticlesByTerm = function (term) {
         var authorMatches = Articles.find({authors: {$regex: regex, $options: options}}).fetch();
         var keyWordMatches = Articles.find({keywords: {$regex: regex, $options: options}}).fetch();
         var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
+        var htmlMatches = Articles.find({html: {$regex: regex, $options: options}}).fetch();
 
         matchArrays.push(titleMatches);
         matchArrays.push(authorMatches);
         matchArrays.push(keyWordMatches);
         matchArrays.push(sourceMatches);
+        matchArrays.push(htmlMatches);
 
     });
 
-    var articles = []
+    var articles = [];
 
     matchArrays.forEach(function (matches) {
         appendMatchesToArray(articles, matches);
