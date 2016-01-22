@@ -19,8 +19,6 @@ getArticlesByTerm = function (term) {
         matchArrays.push(keyWordMatches);
         matchArrays.push(sourceMatches);
 
-        console.log(regex);
-        console.log(matchArrays);
     });
 
     var articles = []
@@ -34,7 +32,9 @@ getArticlesByTerm = function (term) {
 
 var appendMatchesToArray = function (articles, matches) {
     matches.forEach(function (match) {
-        articles.push(match);
+        if(articles.indexOf(match) < 0){
+            articles.push(match);
+        }
     });
 };
 

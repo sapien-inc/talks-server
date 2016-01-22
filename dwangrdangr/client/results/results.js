@@ -10,7 +10,6 @@ if (Meteor.isClient) {
       if (!articles) {
         articles = [];
       }
-      console.log(articles.length);
       return articles;
     }
   });

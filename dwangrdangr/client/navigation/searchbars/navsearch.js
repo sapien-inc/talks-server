@@ -13,7 +13,6 @@ if (Meteor.isClient) {
         $(document).on('submit', '#searchForm', function (e) {
             e.preventDefault()
             var searchVal = $('#search')[0].value;
-            console.log(searchVal);
             Meteor.call('searchArticles', searchVal, function (err, res) {
                 if (err) throw  err;
                 Session.set('searchResults', res);

@@ -12,9 +12,10 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 
-    likeArticle: function (articleID) {
+    likeArticle: function (articleID, calculate) {
         var like = addLike(Meteor.userId(), articleID);
-        var prefs = calculateTops(Meteor.userId());
+        if(calculate)
+            var prefs = calculateTops(Meteor.userId());
         var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
         var article = appendLikes(articles,Meteor.userId());
         return articles;
