@@ -77,7 +77,6 @@ if (Meteor.isClient) {
     (function () {
         $(document).on('click', '.feed-heart', function (e) {
             //var curr = Session.get('currentArticle');
-            console.log("www")
             var articleID = e.target.attributes[0].nodeValue;
             var style = e.target.attributes[2].nodeValue;
             if(style.indexOf('grey') >=0){

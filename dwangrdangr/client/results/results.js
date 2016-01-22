@@ -35,11 +35,10 @@ if (Meteor.isClient) {
 
     $(document).on('click', '.search-heart', function (e) {
       //var curr = Session.get('currentArticle');
-      console.log("okk")
       var articleID = e.target.attributes[0].nodeValue;
       var style = e.target.attributes[2].nodeValue;
       if(style.indexOf('grey') >=0){
-        Meteor.call('likeArticle', articleID, function (err, result) {
+        Meteor.call('likeArticle', articleID, Session.get('searchResults'), function (err, result) {
           if (err) {
             throw err;
           }
@@ -50,11 +49,10 @@ if (Meteor.isClient) {
       }else{
         Meteor.call('unlikeArticle', articleID, function (err, result) {
           if (err) console.log(err);
-          else Session.set('searchResults', result.slice(0,25));
+          else Session.set('searchResults', Session.get('searchResults'), result.slice(0,25));
         });
       }
     });
-
 
   })();
 
