@@ -38,10 +38,11 @@ Meteor.methods({
         return articles;
     },
     getArticleById: function (articleId) {
+        console.log("ID:" + articleId);
         //objId = new ObjectId(id);
+        //var objId = new Mongo.ObjectID(articleId);
         //var article = Articles.findOne({_id:objId});
-        var objId = new Mongo.ObjectID(articleId);
-        var article = Articles.findOne({_id: objId});
+        var article = Articles.findOne({_id: articleId});
         return article;
     },
 

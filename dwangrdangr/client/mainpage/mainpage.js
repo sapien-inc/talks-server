@@ -24,6 +24,16 @@ if (Meteor.isClient) {
         }
     });
 
+    //Template.suggestedArticles.rendered = function(){
+    //    $('.list-group-item').popover({
+    //        title: 'New Letter',
+    //        content: function(){
+    //            console.log("hover");
+    //            return "content";
+    //        }
+    //    });
+    //};
+
     Template.mainArticle.helpers({
         article_body: function () {
             var article = Session.get('currentArticle');
@@ -31,8 +41,18 @@ if (Meteor.isClient) {
                 return "";
             }
             return article.html;
+        },
+
+        current_title: function(){
+            var article = Session.get('currentArticle');
+            if(!article){
+                return "";
+            }
+            return article.title;
         }
     });
+
+
 
     //Template.mainArticle.onCreated(function () {
     //  // Use this.subscribe inside onCreated callback
@@ -60,14 +80,7 @@ if (Meteor.isClient) {
 
             Meteor.call('getArticleById', id, function (err, res) {
                 Session.set('currentArticle', res);
-                Session.set('currentTitle', res.title);
             });
-            //Meteor.call('callPy', url, function(err,res){
-            //  if (err){
-            //    throw err
-            //  }
-            //  Session.set('currentTitle',title);
-            //});
         });
     })();
 

@@ -9,10 +9,10 @@ getArticlesByTerm = function (term) {
     words.forEach(function (word) {
         var regex = "(.?)" + word + "(.?)";
         var options = "ims";
-        var titleMatches = Articles.find({title: {$regex: regex, $options:options}}).fetch();
-        var authorMatches = Articles.find({authors: {$regex: regex, $options:options}}).fetch();
-        var keyWordMatches = Articles.find({keywords: {$regex: regex, $options:options}}).fetch();
-        var sourceMatches = Articles.find({source: {$regex: regex, $options:options}}).fetch();
+        var titleMatches = Articles.find({title: {$regex: regex, $options: options}}).fetch();
+        var authorMatches = Articles.find({authors: {$regex: regex, $options: options}}).fetch();
+        var keyWordMatches = Articles.find({keywords: {$regex: regex, $options: options}}).fetch();
+        var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
 
         matchArrays.push(titleMatches);
         matchArrays.push(authorMatches);
@@ -25,7 +25,7 @@ getArticlesByTerm = function (term) {
 
     var articles = []
 
-    matchArrays.forEach(function(matches){
+    matchArrays.forEach(function (matches) {
         appendMatchesToArray(articles, matches);
     });
 
@@ -93,6 +93,11 @@ site4 = 'nbc';
 //Articles.insert(doc2);
 //Articles.insert(doc3);
 //Articles.insert(doc4);
+
+var articles = Articles.find().fetch();
+articles.forEach(function (article) {
+   Articles.update(article._id, {$set:{html:'<p>'+ key3 + " " +key1 + '</p>'}});
+});
 
 
 
