@@ -18,6 +18,16 @@ if (Meteor.isClient) {
             document.getElementById("login-container").style.visibility = "visible";
         });
 
+        $(document).on('click', '.view-profile', function (e) {
+            e.preventDefault();
+            Meteor.call('getLikedArticles', function () {
+                if (err) throw err;
+                else{
+                    Session.set()
+                }
+            });
+        }
+
     })();
 }
 

@@ -70,6 +70,12 @@ Meteor.methods({
         return article;
     },
 
+    getLikedArticles: function () {
+        var userId = Meteor.userId();
+        var articles = getUserLikedArticles(userId);
+        return articles;
+    },
+
     searchArticles: function (term) {
         var articles = getArticlesByTerm(term);
         return articles;

@@ -1,5 +1,5 @@
 /**
- * Created by abe707 on 1/22/16.
+ * Created by abe707 on 1/23/16.
  */
 if(Meteor.isClient){
     var getArticleId = function(){
@@ -7,41 +7,14 @@ if(Meteor.isClient){
         return location.split("/")[2];
     };
 
-    var ARTICLE_BODY  = "article_body";
-    var ARTICLE_TITLE = "article_title";
-    var ARTICLE_SOURCE = "article_source";
-    var ARTICLE_AUTHOR = "article_author";
-    var ARTICLE_TOPICS = "article_topics";
-
 
 
     Tracker.autorun(function () {
-        Meteor.call('getArticleById',getArticleId(),function (err, res) {
-            if (err) {
-                throw err
-            }else{
-                Session.set(ARTICLE_BODY, res.html);
-                Session.set(ARTICLE_TITLE, res.title);
-                Session.set(ARTICLE_AUTHOR, res.authors);
-                Session.set(ARTICLE_SOURCE, res.source);
-                Session.set(ARTICLE_TOPICS, res.keywords);
-            }
-
-        })
     });
 
-    Template.display.helpers({
-        body: function (){
-            return Session.get(ARTICLE_BODY);
-        },
-        title: function(){
-            return Session.get(ARTICLE_TITLE);
-        },
-        source: function(){
-            return Session.get(ARTICLE_SOURCE);
-        },
-        author: function(){
-            return Session.get(ARTICLE_AUTHOR);
+    Template.profile.helpers({
+        liked_articles:function(){
+
         }
     });
 
@@ -99,4 +72,3 @@ if(Meteor.isClient){
 
 
 }
-

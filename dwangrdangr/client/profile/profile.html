@@ -1,0 +1,12 @@
+<template name="profile">
+    <div class="container" id="profile-container">
+        <div class="panel-group" id="profile-info">
+
+        </div>
+        <div class="panel-group" id="accordion">
+            {{#each liked_articles}}
+                {{>articlePanel}}
+            {{/each}}
+        </div>\
+    </div>
+</template>
