@@ -2,7 +2,9 @@ Articles = new Mongo.Collection('articles');
 
 getArticlesByTerm = function (term) {
     term = term.toLowerCase();
-    var words = term.split();
+
+    var words = term.split(" ");
+
 
     var matchArrays = [];
 
@@ -13,26 +15,47 @@ getArticlesByTerm = function (term) {
         var authorMatches = Articles.find({authors: {$regex: regex, $options: options}}).fetch();
         var keyWordMatches = Articles.find({keywords: {$regex: regex, $options: options}}).fetch();
         var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
+        var htmlMatches = Articles.find({html: {$regex: regex, $options: options}}).fetch();
 
         matchArrays.push(titleMatches);
         matchArrays.push(authorMatches);
         matchArrays.push(keyWordMatches);
         matchArrays.push(sourceMatches);
+        matchArrays.push(htmlMatches);
+
 
     });
 
-    var articles = []
+    var articles = [];
+    var ids = [];
 
     matchArrays.forEach(function (matches) {
-        appendMatchesToArray(articles, matches);
+        appendMatchesToArray(ids, articles, matches);
     });
 
-    return articles;
+    return cleanDuplicates(articles);
 };
 
-var appendMatchesToArray = function (articles, matches) {
+cleanDuplicates = function(articles) {
+    var uniqueIds = [];
+    var cleanedArticles = [];
+    articles.forEach(function(article){
+        var id = article._id.valueOf();
+        if (!(uniqueIds.indexOf(id) >= 0)){
+            uniqueIds.push(id);
+            cleanedArticles.push(article)
+        }
+    })
+    return cleanedArticles;
+}
+
+
+var appendMatchesToArray = function (ids, articles, matches) {
     matches.forEach(function (match) {
-        articles.push(match);
+        if(ids.indexOf(match._id) < 0){
+            articles.push(match);
+            ids.push(match._id);
+        }
     });
 };
 

@@ -33,3 +33,8 @@ initUserPrefsWithTops = function (userId, topKeywords, topSources, topAuthors) {
     var prefId = UserPrefs.insert(prefs);
     return prefId;
 };
+
+getUserTopKeywords = function (userId) {
+    var prefs = UserPrefs.findOne({userId:userId});
+    return pref.topKeywords;
+}

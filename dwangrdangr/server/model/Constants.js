@@ -7,3 +7,9 @@ SOURCE_PREF_MULTIPLIER = 4;
 
 KEYWORD_HOT_MULTIPLIER = 3;
 SOURCE_HOT_MULTIPLIER = 2;
+
+ARTICLE_BODY  = "article_body";
+ARTICLE_TITLE = "article_title";
+ARTICLE_SOURCE = "article_source";
+ARTICLE_AUTHOR = "article_author";
+ARTICLE_TOPICS = "article_topics";

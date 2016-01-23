@@ -28,7 +28,7 @@ for url in urls:
 		paper = newspaper.build(url)
 		for a in paper.articles[0:15]:
 			article = Article(a.url, keep_article_html=True)
-			article.source = url
+			article.source = paper.brand
 			articles.append(article)
 	except:
 		print(url);
@@ -57,17 +57,20 @@ def scrapeArticle(article):
 	try:
 		article.download()
 		article.parse()
+		article.nlp()
+		summary = article.summary
+		keywords = article.keywords
 		if badArticle(article):
 			print("error")
-			pass
-		summary = sumy(article)
+			return
 		mongoHash = {
 			"source" : article.source,
 			"url" : article.url,
 			"authors": article.authors,
 			"title": article.title,
 			"html": article.article_html,
-			"summary": summary
+			"summary": summary,
+			"keywords": keywords
 		}
 		database.articles.insert(mongoHash)
 	except:

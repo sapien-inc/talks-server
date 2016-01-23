@@ -1,12 +1,12 @@
 Likes = new Mongo.Collection('likes');
 
 addLike = function (userId, articleId) {
-    var mongoId = new Mongo.ObjectID(articleId);
+    //var mongoId = new Mongo.ObjectID(articleId);
 
-    Likes.remove({articleId:mongoId, userId:userId});
+    Likes.remove({articleId:articleId, userId:userId});
     var like = {};
     like.userId = userId;
-    like.articleId = mongoId;
+    like.articleId = articleId;
     var likedId = Likes.insert(like);
     return likedId;
 };
@@ -23,7 +23,6 @@ getUserLikedArticles = function (userId) {
 
 removeLike = function(userId, articleId){
     Likes.remove({articleId:articleId, userId:userId});
-
 };
 
 appendLikes = function(articles, userId){

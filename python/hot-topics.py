@@ -5,14 +5,16 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://127.0.0.1:3001')
 database = client.meteor
 
-cbs_paper = newspaper.build('http://cbs.com', memoize_articles=False)
-article = cbs_paper.articles[10]
-article.download()
-article.parse()
-print(article.text)
+popular = newspaper.popular_urls()[0:5]
+hot = newspaper.hot();
+brands = []
 
-hot = newspaper.hot()
-popular = newspaper.popular_urls()
+for url in popular:
+	paper = newspaper.build(url, memoize_articles=False)
+	brand = paper.brand
+	brands.append(brand)
+
+print(brands)
 
 # print(hot)
 # print(popular)

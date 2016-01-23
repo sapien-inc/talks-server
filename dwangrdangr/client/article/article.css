@@ -1,0 +1,65 @@
+h1.article-title {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    width: inherit;
+    left:0%;
+}
+
+h3.article-author {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    width: inherit;
+}
+
+h4.article-source {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    font-size: 15px;
+    text-align: center;
+    width: inherit;
+}
+
+
+.article-body {
+    font-family: 'Josefin Slab', serif;
+    font-size: 18px;
+    position: relative;
+    width: inherit;
+}
+
+
+button.more{
+    color: grey;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    margin-bottom: 0px;
+    /*background:  url('/beige.jpg') no-repeat left top;*/
+    background-color: #333333;
+    border-color: transparent;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 20px;
+    display: -webkit-box;
+}
+
+div.content, div.more{
+    /*border-color: #3596e0;*/
+    border-style: none;
+    float: left;
+}
+
+#main-article-container{
+    position:absolute;
+    top:15%;
+    left:5%;
+    width:83%;
+}
+
+.more-div{
+    position:absolute;
+    right: 13%;
+    top:15%;
+}
