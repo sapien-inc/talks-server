@@ -43,13 +43,13 @@ if (Meteor.isClient) {
             throw err;
           }
           else {
-            Session.set('searchResults', result.slice(0,25));
+            Session.set('searchResults',  result);
           }
         });
       }else{
-        Meteor.call('unlikeArticle', articleID, function (err, result) {
+        Meteor.call('unlikeArticle', articleID, Session.get('searchResults'), function (err, result) {
           if (err) console.log(err);
-          else Session.set('searchResults', Session.get('searchResults'), result.slice(0,25));
+          else Session.set('searchResults',  result);
         });
       }
     });

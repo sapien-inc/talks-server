@@ -68,6 +68,7 @@ Meteor.methods({
 
   searchArticles: function (term) {
     var articles = getArticlesByTerm(term);
+    var article = appendLikes(articles, Meteor.userId());
     return articles;
   },
 
