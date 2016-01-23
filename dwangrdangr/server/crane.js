@@ -11,21 +11,33 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-
-    likeArticle: function (articleID, calculate) {
+    likeArticle: function (articleID, selection, calculate) {
         var like = addLike(Meteor.userId(), articleID);
-        if(calculate)
+        if (calculate)
             var prefs = calculateTops(Meteor.userId());
-        var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
-        var article = appendLikes(articles,Meteor.userId());
+        var articles;
+        if (selection) {
+            articles = sortArticles(Meteor.userId(), selection);
+        }
+        else {
+            articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+        }
+        var article = appendLikes(articles, Meteor.userId());
         return articles;
     },
 
-    unlikeArticle: function (articleID) {
-        var like = removeLike(Meteor.userId(), articleID);
+    unlikeArticle: function (articleID, selection) {
+        var mongoId = new Mongo.ObjectID(articleID);
+        var like = removeLike(Meteor.userId(), mongoId);
         var prefs = calculateTops(Meteor.userId());
-        var articles = sortArticles(Meteor.userId(), Articles.find().fetch());
-        var article = appendLikes(articles,Meteor.userId());
+        var articles;
+        if (selection) {
+            articles = sortArticles(Meteor.userId(), selection);
+        }
+        else {
+            articles = sortArticles(Meteor.userId(), Articles.find().fetch());
+        }
+        var article = appendLikes(articles, Meteor.userId());
         return articles;
     },
 
@@ -33,7 +45,6 @@ Meteor.methods({
         var userId = Meteor.userId();
         return initUserPrefsWithTops(userId, [], [], []);
     },
-
 
     getAllArticles: function () {
         var articles = Articles.find().fetch();
@@ -43,16 +54,19 @@ Meteor.methods({
     getSortedArticles: function () {
         var articles = Articles.find().fetch();
         sortArticles(Meteor.userId(), articles);
-        appendLikes(articles,Meteor.userId());
-        return articles;
+        appendLikes(articles, Meteor.userId());
+        return articles.slice(0, 25);
     },
 
     getArticleById: function (articleId) {
-        console.log("ID:" + articleId);
-        //objId = new ObjectId(id);
+
+        // harry
         //var objId = new Mongo.ObjectID(articleId);
         //var article = Articles.findOne({_id:objId});
+
+        // drew
         var article = Articles.findOne({_id: articleId});
+
         return article;
     },
 

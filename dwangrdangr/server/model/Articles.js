@@ -2,7 +2,9 @@ Articles = new Mongo.Collection('articles');
 
 getArticlesByTerm = function (term) {
     term = term.toLowerCase();
-    var words = term.split();
+
+    var words = term.split(" ");
+
 
     var matchArrays = [];
 
@@ -21,21 +23,24 @@ getArticlesByTerm = function (term) {
         matchArrays.push(sourceMatches);
         matchArrays.push(htmlMatches);
 
+
     });
 
     var articles = [];
+    var ids = [];
 
     matchArrays.forEach(function (matches) {
-        appendMatchesToArray(articles, matches);
+        appendMatchesToArray(ids, articles, matches);
     });
 
     return articles;
 };
 
-var appendMatchesToArray = function (articles, matches) {
+var appendMatchesToArray = function (ids, articles, matches) {
     matches.forEach(function (match) {
-        if(articles.indexOf(match) < 0){
+        if(ids.indexOf(match._id) < 0){
             articles.push(match);
+            ids.push(match._id);
         }
     });
 };
@@ -96,10 +101,6 @@ site4 = 'nbc';
 //Articles.insert(doc3);
 //Articles.insert(doc4);
 
-var articles = Articles.find().fetch();
-articles.forEach(function (article) {
-   Articles.update(article._id, {$set:{html:'<p>'+ key3 + " " +key1 + '</p>'}});
-});
 
 
 

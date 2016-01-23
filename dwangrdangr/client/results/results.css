@@ -5,10 +5,14 @@ h5{
 }
 
 .panel-title{
-  font-size: 93%;
+  font-size: 103%;
   margin:5px;
 }
 
 .panel-default{
   width: 80%
+}
+
+.search-source-header{
+  font-size: 75%;
 }

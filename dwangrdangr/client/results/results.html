@@ -1,24 +1,31 @@
 <template name="results">
-    <div class="container" id="results-container">
-        <h5 class="results-header"> Search Results:</h5>
-        <div class="panel-group" id="accordion">
-            {{#each search_results}}
-                {{>articlePanel}}
-            {{/each}}
-        </div>
+  <div class="container" id="results-container">
+    <h5 class="results-header">{{search_term}}</h5>
+
+    <div class="panel-group" id="accordion">
+      {{#each search_results}}
+        {{>articlePanel}}
+      {{/each}}
     </div>
+  </div>
 </template>
 
 <template name="articlePanel">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#{{this._id.valueOf}}">{{this.title}}</a>
-            </h4>
-        </div>
-        <div id="{{this._id.valueOf}}" class="panel-collapse collapse">
-            <div class="panel-body">{{{this.html}}}</div>
-        </div>
-        <div class="my-like" data-reblog="{ReblogURL}" data-id="{PostID}"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{this._id.valueOf}}">{{this.title}}</a>
+      </h4>
+      <a class="search-source-header">
+        {{this.source}}
+      </a>
+      <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart search-heart"
+         style="color:{{buttonStyle this._id.valueOf}}">
+      </a>
+
+      <div id="{{this._id.valueOf}}" class="panel-collapse collapse">
+        <div class="panel-body">{{{this.html}}}</div>
+      </div>
     </div>
+  </div>
 </template>

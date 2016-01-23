@@ -15,7 +15,8 @@
     font-size: 15px;
     cursor: pointer;
     margin-top: 5px;
-    float: left;
+    border-bottom-left-radius: 10px;
+    /*float: left;*/
 }
 .list-group-box{
     background-color: #f8f8f8;
@@ -38,6 +39,8 @@
 }
 
 p.main-article {
+    font-size: 20px;
+    font-family: 'Josefin Slab', serif;
     position: relative;
     left: 80px;
     width: 800px;
@@ -45,7 +48,7 @@ p.main-article {
 }
 
 h3.article-title {
-    width: 700px;
+    font-family: 'Lato', sans-serif;    width: 700px;
     position: relative;
     left: 180px;
     top: 105px;
@@ -86,8 +89,11 @@ h3.article-title {
     left: 0px;
 }
 
-.glyphicon-heart{
-    float:left;
+.feed-heart{
+    position:relative;
+    font-size: 25px;
+    cursor:default;
+    left:93%;
 }
 
 /*.btn-like {*/
@@ -106,3 +112,4 @@ h3.article-title {
 .img{
   width:30%;
 }
+

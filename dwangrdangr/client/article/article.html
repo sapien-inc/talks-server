@@ -1,0 +1,23 @@
+<template name="article">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <div class="more">
+        <button class="more" id="button-more-author">More By Author</button>
+        <button class="more" id="button-more-source">More By Source</button>
+        <button class="more" id="button-more-topic">More By Topic</button>
+    </div>
+    <div class="content">
+
+        {{>display}}
+    </div>
+</template>
+
+<template name="display">
+    <h1 class="article-title">{{title}}</h1>
+    <h3 class="article-author">{{author}}</h3>
+    <h4 class="article-source">{{source}}</h4>
+    <p class="article-body">
+        {{{body}}}
+    </p>
+</template>

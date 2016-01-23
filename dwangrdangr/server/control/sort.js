@@ -6,11 +6,25 @@ var calculateArticleScore = function (prefs, article) {
     if (typeof article.keywords == 'undefined')
         article.keywords = [];
 
+    var topKeywords;
+    var topAuthors;
+    var topSources;
+
+    if (!prefs){
+        topKeywords =[];
+        topAuthors =[];
+        topSources = [];
+    }
+    else{
+        topKeywords = prefs.topKeywords;
+        topAuthors = prefs.topAuthors;
+        topSources = prefs.topSources;
+    }
 
     var score = 0;
-    score += getDeltaScore(article.keywords, prefs.topKeywords, KEYWORD_PREF_MULTIPLIER);
-    score += getDeltaScore(article.authors, prefs.topAuthors, AUTHOR_PREF_MULTIPLIER);
-    score += getDeltaScore([article.source], prefs.topSources, SOURCE_PREF_MULTIPLIER);
+    score += getDeltaScore(article.keywords, topKeywords, KEYWORD_PREF_MULTIPLIER);
+    score += getDeltaScore(article.authors, topAuthors, AUTHOR_PREF_MULTIPLIER);
+    score += getDeltaScore([article.source], topSources, SOURCE_PREF_MULTIPLIER);
     score += getDeltaScore(article.keywords, getHotKeyWords(), KEYWORD_HOT_MULTIPLIER);
     score += getDeltaScore([article.source], getHotSites(), SOURCE_HOT_MULTIPLIER);
 

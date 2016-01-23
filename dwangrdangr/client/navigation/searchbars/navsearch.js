@@ -15,6 +15,7 @@ if (Meteor.isClient) {
             var searchVal = $('#search')[0].value;
             Meteor.call('searchArticles', searchVal, function (err, res) {
                 if (err) throw  err;
+                Session.set('searchTerm',"Search: "+ searchVal);
                 Session.set('searchResults', res);
                 Router.go('/results/'+searchVal);
             })

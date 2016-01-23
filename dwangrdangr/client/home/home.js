@@ -22,6 +22,7 @@ if (Meteor.isClient) {
                 }
                 else {
                     document.getElementById("login-container").style.visibility = "hidden";
+                    Router.go('/mainpage')
                 }
             });
 
@@ -53,6 +54,7 @@ if (Meteor.isClient) {
                         Meteor.call('notifyUserRegister', function (err) {
                             if (err) throw err;
                         })
+                        Router.go('/mainpage')
                     }
                 })
             }

@@ -1,10 +1,12 @@
 Likes = new Mongo.Collection('likes');
 
 addLike = function (userId, articleId) {
-    Likes.remove({articleId:articleId, userId:userId});
+    var mongoId = new Mongo.ObjectID(articleId);
+
+    Likes.remove({articleId:mongoId, userId:userId});
     var like = {};
     like.userId = userId;
-    like.articleId = articleId;
+    like.articleId = mongoId;
     var likedId = Likes.insert(like);
     return likedId;
 };
