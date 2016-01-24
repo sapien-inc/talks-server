@@ -4,6 +4,7 @@ h1.article-title {
     font-size: 30px;
     text-align: center;
     width: inherit;
+    left:0%;
 }
 
 h3.article-author {
@@ -23,17 +24,11 @@ h4.article-source {
 }
 
 
-#article-body {
-    font-family: 'Lato', sans-serif;
-    font-size: 15px;
+.article-body {
+    font-family: 'Josefin Slab', serif;
+    font-size: 18px;
     position: relative;
-    text-align: center;
     width: inherit;
-}
-
-#not-authorized {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-size: 150%;
 }
 
 
@@ -51,7 +46,20 @@ button.more{
 }
 
 div.content, div.more{
-    border-color: #3596e0;
-    border-style: groove;
+    /*border-color: #3596e0;*/
+    border-style: none;
     float: left;
+}
+
+#main-article-container{
+    position:absolute;
+    top:15%;
+    left:5%;
+    width:83%;
+}
+
+.more-div{
+    position:absolute;
+    right: 13%;
+    top:15%;
 }

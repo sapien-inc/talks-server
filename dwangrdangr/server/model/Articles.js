@@ -33,8 +33,22 @@ getArticlesByTerm = function (term) {
         appendMatchesToArray(ids, articles, matches);
     });
 
-    return articles;
+    return cleanDuplicates(articles);
 };
+
+cleanDuplicates = function(articles) {
+    var uniqueIds = [];
+    var cleanedArticles = [];
+    articles.forEach(function(article){
+        var id = article._id.valueOf();
+        if (!(uniqueIds.indexOf(id) >= 0)){
+            uniqueIds.push(id);
+            cleanedArticles.push(article)
+        }
+    })
+    return cleanedArticles;
+}
+
 
 var appendMatchesToArray = function (ids, articles, matches) {
     matches.forEach(function (match) {

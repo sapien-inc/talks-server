@@ -5,8 +5,12 @@ Router.map(function () {
     this.route('about', {path: '/about'});
     this.route('home', {path: '/'});
     this.route('mainpage', {path: '/mainpage'});
-    this.route('results', {path: '/results/:search?'});
-    this.route('article', {path: '/article/:id?'});
-    this.route('profile', {path: '/profile/:id?'});
-})
+    this.route('profile', {path: '/profile'});
+    this.route('results', {path: '/results/:search?', data:function(){
+        return this.params
+    }});
+    this.route('article', {path: '/article/:id?',   data:function(){
+        return this.params
+    }});
+});
 
