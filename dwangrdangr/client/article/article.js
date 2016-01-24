@@ -38,7 +38,7 @@ if(Meteor.isClient){
     (function () {
         // Add slideDown animation to dropdown
         $(document).on('click', '#button-more-author', function (e) {
-            var authors = Session.get(ARTICLE_AUTHOR);
+            var authors = Session.get('mainArticle').authors;
             var search_val = "";
             authors.forEach(function (author) {
                 search_val += author + " ";
@@ -55,7 +55,7 @@ if(Meteor.isClient){
         });
 
         $(document).on('click', '#button-more-source', function (e) {
-            var source = Session.get(ARTICLE_SOURCE);
+            var source = Session.get('mainArticle').source;
             Meteor.call('searchArticles', source, function (err, res) {
                 if (err) throw  err;
                 else{
@@ -67,7 +67,7 @@ if(Meteor.isClient){
         });
 
         $(document).on('click', '#button-more-topic', function (e) {
-            var topics = Session.get(ARTICLE_TOPICS);
+            var topics = Session.get('mainArticle').keywords;
             var search_val = "";
             topics.forEach(function (topic) {
                 search_val += topic + " ";

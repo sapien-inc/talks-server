@@ -6,9 +6,12 @@ if (Meteor.isClient) {
 
   Template.results.rendered = function(){
     var currentSearch = Router.current().params.search;
+    currentSearch = currentSearch.replace("-", " ");
     Meteor.call('searchArticles', currentSearch, function (err, res) {
       if (err) throw  err;
       var search_term = Session.get('searchTerm');
+      console.log(search_term);
+      console.log(currentSearch);
       if(search_term.indexOf(currentSearch) < 0)
         Session.set('searchTerm',"Search: "+ currentSearch);
       Session.set('searchResults', res);
