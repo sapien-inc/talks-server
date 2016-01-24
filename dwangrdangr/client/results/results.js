@@ -77,7 +77,7 @@ if (Meteor.isClient) {
           throw err
         }
         Session.set('mainArticle',res)
-      })
+      });
       Router.go('/article/'+articleId, {articleId:articleId});
     });
 

@@ -2,7 +2,12 @@
   <div class="navbar navbar-default">
     <div class="navbar-inner">
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="{{pathFor 'home'}}">Home</a></li>
+        <!--{{#if currentUser}}-->
+          <!--<li class="crane-line"><a href="{{pathFor 'home'}}"><img id="crane-nav" src="crane.png" alt="Paper Crane" style="width:60px;height:50px;">-->
+          <!--</a></li>-->
+        <!--{{else}}-->
+          <li><a href="{{pathFor 'home'}}">Home</a></li>
+        <!--{{/if}}-->
         <li><a href="{{pathFor 'about'}}">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

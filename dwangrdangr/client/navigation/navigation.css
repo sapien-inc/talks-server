@@ -62,3 +62,13 @@
   text-align: center;
 }
 
+#crane-nav {
+  position:relative;
+  left: 0%;
+}
+
+.crane-line > a{
+  top:100%;
+  margin-bottom: 25px;
+}
+

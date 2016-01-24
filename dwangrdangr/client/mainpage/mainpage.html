@@ -3,27 +3,21 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {{#if currentUser}}
-        <div id="article-suggestions" class="container-fluid">
-            <div class="row">
-                <div id="suggested-container" class="col-sm-4">
+        <!--<div id="article-suggestions" class="container-fluid">-->
                     {{>suggestedArticles}}
-                </div>
-                <div class="col-sm-4">
-                    {{>mainArticle}}
-                </div>
-            </div>
-        </div>
+        <!--</div>-->
     {{else}}
         <h2 id="not-authorized">You must sign in, in order to view this page.</h2>
     {{/if}}
 </template>
 
 <template name="suggestedArticles">
-    <div class="container" id="article-list">
         <h2 id="suggested-header">Suggested</h2>
-        <div class="list-group">
+  <div class="wrapper">
+        <div id="suggested-container" class="list-group">
             {{#each suggested_articles}}
-                <div class="list-group-box">
+                <div class="list-group-box"
+                     data-toggle="tooltip" data-placement="right" title="{{this.summary}}">
                     <a id="{{this._id.valueOf}}" class="list-group-item">
                         <h4 class="list-group-item-heading">{{this.title}}</h4>
                         <p class="list-group-item-text">{{this.source}}</p>
@@ -32,22 +26,12 @@
                        style="color:{{buttonStyle this._id.valueOf}}">
                     </a>
                 </div>
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
             {{/each}}
         </div>
-    </div>
-</template>
-
-<template name="mainArticle">
-    <h3 class="article-title">{{current_title}}</h3>
-    <div class="container" id="article-body">
-        <!--<button type="button" class="btn-like">Like</button>-->
-        <p class="main-article">
-            {{{article_body}}}
-                <!--{{#if database_updated}}-->
-            <!--{{{article_body}}}-->
-                <!--{{else}}-->
-            <!--{{>spinner}}-->
-                <!--{{/if}}-->
-        </p>
     </div>
 </template>

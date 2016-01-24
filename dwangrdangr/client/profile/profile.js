@@ -7,7 +7,6 @@ if (Meteor.isClient) {
         Meteor.call('getLikedArticles', function (err, res) {
             if (err) throw err;
             else {
-                console.log(res);
                 Session.set('likedArticles', res);
                 Meteor.call('getUserPrefs', function (err, res) {
                     if (err) throw err;

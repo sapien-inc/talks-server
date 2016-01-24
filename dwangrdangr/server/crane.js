@@ -24,10 +24,12 @@ Meteor.methods({
     },
 
     likeArticle: function (articleID, selection, calculate) {
-        //var mongoId = new Mongo.ObjectID(articleID)
-        //var like = addLike(Meteor.userId(), mongoId);
+        //harry
+        var mongoId = new Mongo.ObjectID(articleID)
+        var like = addLike(Meteor.userId(), mongoId);
 
-        var like = addLike(Meteor.userId(), articleID);
+        //drew
+        //var like = addLike(Meteor.userId(), articleID);
 
         if (calculate)
             var prefs = calculateTops(Meteor.userId());
@@ -43,10 +45,12 @@ Meteor.methods({
     },
 
     unlikeArticle: function (articleID, selection, calculate) {
-        //var mongoId = new Mongo.ObjectID(articleID);
-        //var like = removeLike(Meteor.userId(), mongoId);
+        //harry
+        var mongoId = new Mongo.ObjectID(articleID);
+        var like = removeLike(Meteor.userId(), mongoId);
 
-        var like = removeLike(Meteor.userId(), articleID);
+        //drew
+        //var like = removeLike(Meteor.userId(), articleID);
 
         if (calculate)
             var prefs = calculateTops(Meteor.userId());
@@ -81,11 +85,11 @@ Meteor.methods({
     getArticleById: function (articleId) {
 
         // drew
-        var article = Articles.findOne({_id: articleId});
+        //var article = Articles.findOne({_id: articleId});
 
         //harry
-        //var objId = new Mongo.ObjectID(articleId);
-        //var article = Articles.findOne({_id: objId});
+        var objId = new Mongo.ObjectID(articleId);
+        var article = Articles.findOne({_id: objId});
 
         return article;
     },
