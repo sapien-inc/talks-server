@@ -15,9 +15,15 @@
     height: inherit;
 }
 
-#top-row{
-    overflow: scroll;
+.top-row{
+    overflow-x: scroll;
 }
+
+.top-list-box{
+    float: left;
+}
+
+
 
 .liked-articles-contianer{
     width: inherit;
@@ -37,6 +43,10 @@
     overflow-y: scroll;
 }
 
+.panel-group{
+
+}
+
 .top-list-box{
     float: left;
 }
@@ -50,4 +60,5 @@
 
 .panel-top{
     width: 100%;
+    cursor: pointer;
 }

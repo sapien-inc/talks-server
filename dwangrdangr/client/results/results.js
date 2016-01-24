@@ -8,10 +8,12 @@ if (Meteor.isClient) {
     var currentSearch = Router.current().params.search;
     Meteor.call('searchArticles', currentSearch, function (err, res) {
       if (err) throw  err;
-      Session.set('searchTerm',"Search: "+ currentSearch);
+      var search_term = Session.get('searchTerm');
+      if(search_term.indexOf(currentSearch) < 0)
+        Session.set('searchTerm',"Search: "+ currentSearch);
       Session.set('searchResults', res);
-    })
-  }
+    });
+  };
 
   Template.results.helpers({
     search_results: function () {

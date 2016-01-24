@@ -14,6 +14,7 @@ Meteor.methods({
     getLikedArticles: function () {
         var userId = Meteor.userId();
         var articles = getUserLikedArticles(userId);
+        articles = appendLikes(articles, userId);
         return articles;
     },
 

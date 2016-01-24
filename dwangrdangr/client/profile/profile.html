@@ -5,7 +5,7 @@
             <div class = "list-group list-group-tops">
                 <div class="panel-group" id="top-sites">
                     <h4 >Sources</h4>
-                    <div class="top-row row">
+                    <div class="top-row">
                         {{#each top_sites}}
                             <div class="top-list-box">
                                 {{>topPanel}}
@@ -15,7 +15,7 @@
                 </div>
                 <div class="panel-group" id="top-authors">
                     <h4 >Authors</h4>
-                    <div class="row top-row">
+                    <div class="top-row">
                         {{#each top_authors}}
                             <div class="top-list-box">
                                 {{>topPanel}}
@@ -26,7 +26,7 @@
                 </div>
                 <div class="panel-group" id="top-keywords">
                     <h4 >Topics</h4>
-                    <div class="row top-row">
+                    <div class="top-row">
                         {{#each top_keywords}}
                             <div class="top-list-box">
                                 {{>topPanel}}
@@ -64,9 +64,9 @@
 
 
 <template name="topPanel">
-    <div class="panel panel-default">
+    <a class="panel panel-default panel-top" id="{{this}}">
         <div class="panel panel-heading">
-            <h4 id="{{this}}">{{this}}</h4>
+            <h4>{{this}}</h4>
         </div>
-    </div>
+    </a>
 </template>
