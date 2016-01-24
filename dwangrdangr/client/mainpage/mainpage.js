@@ -36,38 +36,7 @@ if (Meteor.isClient) {
             });
             return color;
         },
-
-
     });
-
-    //Template.suggestedArticles.rendered = function(){
-    //    $('.list-group-item').popover({
-    //        title: 'New Letter',
-    //        content: function(){
-    //            console.log("hover");
-    //            return "content";
-    //        }
-    //    });
-    //};
-
-    Template.mainArticle.helpers({
-        article_body: function () {
-            var article = Session.get('currentArticle');
-            if (!article) {
-                return "";
-            }
-            return article.html;
-        },
-        current_title: function () {
-            var article = Session.get('currentArticle');
-            if (!article) {
-                return "";
-            }
-            return article.title;
-        }
-    });
-
-
 
     //Template.mainArticle.onCreated(function () {
     //  // Use this.subscribe inside onCreated callback
@@ -79,6 +48,8 @@ if (Meteor.isClient) {
             //var curr = Session.get('currentArticle');
             var articleID = e.target.attributes[0].nodeValue;
             var style = e.target.attributes[2].nodeValue;
+            console.log(articleID)
+            console.log(style)
             if(style.indexOf('grey') >=0){
                 Meteor.call('likeArticle', articleID, function (err, result) {
                     if (err) {
@@ -109,6 +80,21 @@ if (Meteor.isClient) {
                 Session.set('currentArticle', res);
             });
         });
+
+
+        Template.suggestedArticles.events({
+            "mouseenter .list-group-item": function (event) {
+                var id = event.target.id;
+            },
+            "mouseleave .list-group-item": function (event) {
+                var id = event.target.id;
+            }
+        })
+
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
     })();
 
 }

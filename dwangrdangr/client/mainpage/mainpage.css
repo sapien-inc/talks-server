@@ -23,13 +23,6 @@
     font-style: italic;
 }
 
-.list-group-box{
-    background-color: #f8f8f8;
-    font-size: 15px;
-    margin-top: 5px;
-    height: auto;
-}
-
 .list-group {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -43,45 +36,16 @@
     overflow-y: scroll;
 }
 
-p.main-article {
-    font-size: 20px;
-    font-family: 'Josefin Slab', serif;
-    position: relative;
-    left: 80px;
-    width: 800px;
-    top: 100px;
-}
-
-h3.article-title {
-    font-family: 'Lato', sans-serif;    width: 700px;
-    position: relative;
-    left: 180px;
-    top: 105px;
-    font-size: 30px;
-}
-
-#article-body {
-    width: 800px;
-    position: absolute;
-    left: 85px;
-    top: 130px;
-}
-
-#suggested-container {
-    position: relative;
-    width: 400px;
-    left: 40px;
-}
-
 #suggested-header {
     font-family: 'Playfair Display', serif;
     position: absolute;
-    left: 23%;
-    top: 30px;
+    left: 10.5%;
+    top: 0px;
+    font-size: 40px;
 }
 
 #article-suggestions {
-    font-size: 16px;
+    font-size: 11px;
     /*background:  url('/earth.jpeg') no-repeat left top;*/
     background-size: 100%;
     background-attachment: fixed;
@@ -101,20 +65,46 @@ h3.article-title {
     left:93%;
 }
 
-/*.btn-like {*/
-    /*background-color: #f8f8f8;*/
-    /*font-size: 15px;*/
-    /*cursor: pointer;*/
-    /*margin-top: 5px;*/
-    /*float: left;*/
-    /*height:inherit;*/
-    /*line-height:inherit*/
-/*}*/
-
-  /*background:  url('/earth.jpeg') no-repeat left top;*/
-/*}*/
+.list-group-item-heading{
+    font-size: 15px;
+}
 
 .img{
   width:30%;
+}
+
+#suggested-container{
+    position:absolute;
+    width: 50%;
+    height:70%;
+    direction: rtl;
+}
+
+.list-group-box{
+    background-color: #f8f8f8;
+    font-size: 15px;
+    margin-top: 5px;
+    height: auto;
+    width:60%;
+    position:relative;
+    left: -38%;
+    text-align: left;
+}
+
+.tooltip{
+    /*background-color: black;*/
+}
+
+.tooltip-inner{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color: #269abc;
+    z-index: -1;position:relative;
+}
+
+.tooltip-arrow{
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
 }
 
