@@ -15,9 +15,15 @@
     height: inherit;
 }
 
-#top-row{
-    overflow: scroll;
+.top-row{
+    overflow-x: scroll;
 }
+
+.top-list-box{
+    float: left;
+}
+
+
 
 .liked-articles-contianer{
     width: inherit;
@@ -35,6 +41,10 @@
     max-height: 600px;
     width: inherit;
     overflow-y: scroll;
+}
+
+.panel-group{
+
 }
 
 .top-list-box{

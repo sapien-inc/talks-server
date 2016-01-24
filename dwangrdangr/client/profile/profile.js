@@ -39,15 +39,21 @@ if (Meteor.isClient) {
         }
     });
 
+    var appendToList = function(listA, listB){
+        listB.forEach(function(item){
+            listA.push(item);
+        })
+    };
+
     Template.profile.helpers({
         top_sites: function () {
-            return Session.get('userPrefs').topSources;
+            return Session.get('userPrefs').topSources.slice(0,5);
         },
         top_authors: function () {
-            return Session.get('userPrefs').topAuthors;
+            return Session.get('userPrefs').topAuthors.slice(0,5);
         },
         top_keywords: function () {
-            return Session.get('userPrefs').topKeywords;
+            return Session.get('userPrefs').topKeywords.slice(0,5);
         },
     });
 
