@@ -3,6 +3,7 @@
  */
 if(Meteor.isClient){
 
+
     Template.article.rendered = function(){
         var currentID = Router.current().params.id
         Meteor.call('getArticleById',currentID,function(err,res){

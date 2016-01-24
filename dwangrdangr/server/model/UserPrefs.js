@@ -21,12 +21,13 @@ setUserTops = function (userId, topKeywords, topSources, topAuthors) {
         }
     });
     var updated = UserPrefs.findOne({userId: userId});
+
     return updated;
 };
 
 initUserPrefsWithTops = function (userId, topKeywords, topSources, topAuthors) {
     var prefs = {};
-    prefs.userIdl = userId;
+    prefs.userId = userId;
     prefs.topKeywords = topKeywords;
     prefs.topSources = topSources;
     prefs.topAuthors = topAuthors;

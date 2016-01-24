@@ -3,9 +3,9 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {{#if currentUser}}
-        <div id="article-suggestions" class="container-fluid">
+        <!--<div id="article-suggestions" class="container-fluid">-->
                     {{>suggestedArticles}}
-        </div>
+        <!--</div>-->
     {{else}}
         <h2 id="not-authorized">You must sign in, in order to view this page.</h2>
     {{/if}}
@@ -13,6 +13,7 @@
 
 <template name="suggestedArticles">
         <h2 id="suggested-header">Suggested</h2>
+  <div class="wrapper">
         <div id="suggested-container" class="list-group">
             {{#each suggested_articles}}
                 <div class="list-group-box"
@@ -32,4 +33,5 @@
             </script>
             {{/each}}
         </div>
+    </div>
 </template>

@@ -18,9 +18,10 @@ calculateTops = function (userId) {
         if (sourceCounts.hasOwnProperty(source)) sourceCounts[source] = sourceCounts[source] + 1;
         else sourceCounts[source] = 1;
 
-        var author = article.author;
-        if (authorCounts.hasOwnProperty(author)) authorCounts[author] = authorCounts[author] + 1
-        else authorCounts[author] = 1;
+        article.authors.forEach(function (author) {
+            if (authorCounts.hasOwnProperty(author)) authorCounts[author] = authorCounts[author] + 1
+            else authorCounts[author] = 1;
+        });
     });
 
 
@@ -29,11 +30,13 @@ calculateTops = function (userId) {
     var countAuthors = getReverseMap(authorCounts);
 
 
+
     var topKeywords = getTop(countKeywords);
     var topSources = getTop(countSources);
     var topAuthors = getTop(countAuthors);
 
-    var updated = setUserTops(userId, topKeywords, topSources, topAuthors);
+
+   return setUserTops(userId, topKeywords, topSources, topAuthors);
 
 };
 

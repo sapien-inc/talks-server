@@ -46,6 +46,7 @@ if (Meteor.isClient) {
     (function () {
         $(document).on('click', '.feed-heart', function (e) {
             //var curr = Session.get('currentArticle');
+            e.stopPropagation();
             var articleID = e.target.attributes[0].nodeValue;
             var style = e.target.attributes[2].nodeValue;
             console.log(articleID)
@@ -77,8 +78,12 @@ if (Meteor.isClient) {
             var id = $(this)[0].id;
 
             Meteor.call('getArticleById', id, function (err, res) {
-                Session.set('currentArticle', res);
+                if (err){
+                    throw err
+                }
+                Session.set('mainArticle', res);
             });
+            Router.go('/article/'+id, {articleId:id});
         });
 
 

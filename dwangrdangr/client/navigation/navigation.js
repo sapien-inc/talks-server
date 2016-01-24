@@ -2,7 +2,7 @@ if (Meteor.isClient) {
     (function () {
         // Add slideDown animation to dropdown
         $(document).on('show.bs.dropdown', '.dropdown', function (e) {
-            console.log("fsdfds")
+            console.log("fsdfds");
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
         });
 
@@ -14,12 +14,32 @@ if (Meteor.isClient) {
         $(document).on('click', '.logout-button', function (e) {
             e.preventDefault();
             Meteor.logout();
-            Router.go('/')
+            Router.go('/');
             document.getElementById("login-container").style.visibility = "visible";
         });
 
         $(document).on('.click', '#crane-tab', function (e) {
             console.log("wooho");
+        });
+
+        $(document).on('click', '.view-profile', function (e) {
+            e.preventDefault();
+            Meteor.call('getLikedArticles', function (err, res) {
+                if (err) throw err;
+                else {
+                    console.log(res);
+                    Session.set('likedArticles', res);
+
+                    Meteor.call('getUserPrefs', function (err, res) {
+                        if (err) throw err;
+                        else {
+                            Session.set('userPrefs', res);
+                            console.log(res);
+                            Router.go('/profile');
+                        }
+                    })
+                }
+            });
         });
 
     })();
