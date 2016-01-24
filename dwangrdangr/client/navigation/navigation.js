@@ -22,9 +22,18 @@ if (Meteor.isClient) {
             e.preventDefault();
             Meteor.call('getLikedArticles', function (err, res) {
                 if (err) throw err;
-                else{
+                else {
+                    console.log(res);
                     Session.set('likedArticles', res);
-                    Router.go('/profile');
+
+                    Meteor.call('getUserPrefs', function (err, res) {
+                        if (err) throw err;
+                        else {
+                            Session.set('userPrefs', res);
+                            console.log(res);
+                            Router.go('/profile');
+                        }
+                    })
                 }
             });
         });

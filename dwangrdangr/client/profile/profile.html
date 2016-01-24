@@ -1,12 +1,72 @@
 <template name="profile">
-    <div class="container" id="profile-container">
-        <div class="panel-group" id="profile-info">
+    <div class="container-fluid row" id="profile-page">
+        <div class="container-fluid col-sm-4" id="profile-top">
+            <h2 class= "profile-header panel-group">Favorites</h2>
+            <div class = "list-group list-group-tops">
+                <div class="panel-group" id="top-sites">
+                    <h4 >Sources</h4>
+                    <div class="top-row row">
+                        {{#each top_sites}}
+                            <div class="top-list-box">
+                                {{>topPanel}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="panel-group" id="top-authors">
+                    <h4 >Authors</h4>
+                    <div class="row top-row">
+                        {{#each top_authors}}
+                            <div class="top-list-box">
+                                {{>topPanel}}
+                            </div>
+                        {{/each}}
+                    </div>
 
+                </div>
+                <div class="panel-group" id="top-keywords">
+                    <h4 >Topics</h4>
+                    <div class="row top-row">
+                        {{#each top_keywords}}
+                            <div class="top-list-box">
+                                {{>topPanel}}
+                            </div>
+                        {{/each}}
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="panel-group" id="accordion">
+        <div class="container-fluid col-sm-8" id="profile-liked">
+                {{>likedArticles}}
+        </div>
+    </div>
+</template>
+
+<template name="likedArticles">
+    <div class="container liked-articles-container" >
+        <h2 class= "profile-header">Liked Articles</h2>
+        <div class="list-group" id="profile-article-list">
             {{#each liked_articles}}
-                {{>articlePanel}}
+                <div class="list-group-box">
+                    <a id="{{this._id.valueOf}}" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{this.title}}</h4>
+                        <p class="list-group-item-text">{{this.source}}</p>
+                        <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart feed-heart"
+                           style="color:{{buttonStyle this._id.valueOf}}">
+                        </a>
+                    </a>
+                </div>
             {{/each}}
-        </div>\
+        </div>
+    </div>
+</template>
+
+
+<template name="topPanel">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h4 id="{{this}}">{{this}}</h4>
+        </div>
     </div>
 </template>
