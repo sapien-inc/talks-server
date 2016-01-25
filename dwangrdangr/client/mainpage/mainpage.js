@@ -11,7 +11,35 @@ if (Meteor.isClient) {
                 throw err
             }
             Session.set('suggestedArticles', res)
-        })
+        });
+
+        Meteor.call('getHotTopics', function(err,res){
+              if (err){
+                  throw err
+              };
+              Session.set('hotTopics', res);
+          }
+        );
+
+        Meteor.call('getHotSites', function(err,res){
+              if (err){
+                  throw err
+              };
+              Session.set('hotSites', res);
+          }
+        );
+    });
+
+    Template.trending.helpers({
+        trending_topics: function(){
+            return Session.get('hotTopics').splice(0,5);
+        }
+    });
+
+    Template.hotSites.helpers({
+        hot_sites: function(){
+            return Session.get('hotSites').splice(0,5);
+        }
     });
 
     Template.suggestedArticles.helpers({
@@ -94,7 +122,7 @@ if (Meteor.isClient) {
             "mouseleave .list-group-item": function (event) {
                 var id = event.target.id;
             }
-        })
+        });
 
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();

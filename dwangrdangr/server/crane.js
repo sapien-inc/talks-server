@@ -1,7 +1,7 @@
 //Articles = new Mongo.Collection('articles');
-Current = new Mongo.Collection('current');
 //ObjectId = Npm.require('mongodb').ObjectID;
 
+HotSites = new Mongo.Collection('hotSites');
 
 if (Meteor.isServer) {
     // This code only runs on the server
@@ -16,6 +16,18 @@ Meteor.methods({
         var articles = getUserLikedArticles(userId);
         articles = appendLikes(articles, userId);
         return articles;
+    },
+
+    getHotSites: function (){
+        var hotSites = HotSites.find({}).fetch();
+        if (!hotSites){
+            return []
+        }
+        return hotSites;
+    },
+
+    getHotTopics: function(){
+        return ['no','trending','topics','yet',':('];
     },
 
     getUserPrefs:function(){

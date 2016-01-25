@@ -3,16 +3,17 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {{#if currentUser}}
-        <!--<div id="article-suggestions" class="container-fluid">-->
-                    {{>suggestedArticles}}
-        <!--</div>-->
+      <h2 id="news-feed-header">{{currentUser.username}}'s News Feed</h2>
+        {{>suggestedArticles}}
+        {{>trending}}
+        {{>hotSites}}
     {{else}}
         <h2 id="not-authorized">You must sign in, in order to view this page.</h2>
     {{/if}}
 </template>
 
 <template name="suggestedArticles">
-        <h2 id="suggested-header">Suggested</h2>
+  <h2 id="suggested-header">Suggested</h2>
   <div class="wrapper">
         <div id="suggested-container" class="list-group">
             {{#each suggested_articles}}
@@ -21,9 +22,9 @@
                     <a id="{{this._id.valueOf}}" class="list-group-item">
                         <h4 class="list-group-item-heading">{{this.title}}</h4>
                         <p class="list-group-item-text">{{this.source}}</p>
-                    </a>
-                    <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart feed-heart"
-                       style="color:{{buttonStyle this._id.valueOf}}">
+                        <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart feed-heart"
+                          style="color:{{buttonStyle this._id.valueOf}}">
+                        </a>
                     </a>
                 </div>
             <script>
@@ -34,4 +35,22 @@
             {{/each}}
         </div>
     </div>
+</template>
+
+<template name="trending">
+  <h1 id="trending-topics-header"> Trending Topics </h1>
+  <ul id="topics-container" class="list-inline">
+    {{#each trending_topics}}
+      <li class="list-group-item news-feed-trend trending-topic"> {{this}} </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="hotSites">
+  <h1 id="hot-sites-header"> Hot Sites </h1>
+  <ul id="sites-container" class="list-inline">
+    {{#each hot_sites}}
+    <li class="list-group-item news-feed-trend hot-site"> {{this.brand}} </li>
+    {{/each}}
+  </ul>
 </template>
