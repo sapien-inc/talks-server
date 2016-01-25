@@ -26,6 +26,7 @@ removeLike = function(userId, articleId){
 };
 
 appendLikes = function(articles, userId){
+    //console.log(articles);
     articles.forEach(function(article){
         var likes = Likes.find({articleId:article._id, userId:userId}).fetch();
         article.liked = false;

@@ -1,46 +1,52 @@
 <template name="article">
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-  <div class="container">
-    <div id="main-article-container" class="container container-article">
-      {{>display}}
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <div class="container">
+        <div id="main-article-container" class="container container-article">
+            {{>display}}
+        </div>
+        <div id="more-articles-container" class="container container-more">
+            {{#if hasAuthorList}}
+                <h4 class="more">More By Author(s)</h4>
+                {{#each more_author_list}}
+                    {{>more_list_item}}
+                {{/each}}
+                <h5 class="more" id="view-more-author">more</h5>
+            {{/if}}
+            {{#if hasSourceList}}
+                <h4 class="more">More By Source</h4>
+                {{#each more_source_list}}
+                    {{>more_list_item}}
+                {{/each}}
+                <h5 class="more" id="view-more-source">more</h5>
+            {{/if}}
+            {{#if hasTopicList}}
+                <h4 class="more">More By Topic</h4>
+                {{#each more_topic_list}}
+                    {{>more_list_item}}
+                {{/each}}
+                <h5 class="more" id="view-more-topic">more</h5>
+            {{/if}}
+        </div>
     </div>
-    <div id="more-articles-container" class="container container-more">
-      <h4 class="more">More By Author(s)</h4>
-        {{#each more_author_list}}
-            {{>more_list_item}}
-        {{/each}}
-        <h5 class="more" id="view-more-author">more</h5>
-      <h4 class="more">More By Source</h4>
-        {{#each more_source_list}}
-            {{>more_list_item}}
-        {{/each}}
-        <h5 class="more" id="view-more-source">more</h5>
-      <h4 class="more">More By Topic</h4>
-        {{#each more_topic_list}}
-            {{>more_list_item}}
-        {{/each}}
-        <h5 class="more" id="view-more-topic">more</h5>
-    </div>
-  </div>
 </template>
 
 <template name="display">
-  <h1 class="article-title">{{title}}</h1>
-  <h3 class="article-author">{{author}}</h3>
-  <h4 class="article-source">{{source}}</h4>
+    <h1 class="article-title">{{title}}</h1>
+    <h3 class="article-author">{{author}}</h3>
+    <h4 class="article-source">{{source}}</h4>
     <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart article-heart"
        style="color:{{buttonStyle this._id.valueOf}}">
     </a>
-  <p class="article-body" align="justify">
-    {{{body}}}
-  </p>
+    <p class="article-body" align="justify">
+        {{{body}}}
+    </p>
 </template>
 
 <template name="more_list_item">
-    <div class="panel panel-default panel-more" >
-        <div class="panel-heading panel-more-heading" >
+    <div class="panel panel-default panel-more">
+        <div class="panel-heading panel-more-heading">
             <h4 class="panel-more-text" id="{{this._id.valueOf}}">{{this.title}}</h4>
         </div>
     </div>

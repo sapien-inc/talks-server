@@ -1,15 +1,15 @@
 /**
  * Created by abe707 on 1/22/16.
  */
-if(Meteor.isClient){
+if (Meteor.isClient) {
 
 
-    Template.article.rendered = function(){
+    Template.article.rendered = function () {
         var currentID = Router.current().params.id;
-        Meteor.call('getArticleById',currentID,function(err,article){
+        Meteor.call('getArticleById', currentID, function (err, article) {
             if (err) throw err;
-            else{
-                Session.set('mainArticle',article);
+            else {
+                Session.set('mainArticle', article);
                 Meteor.call('searchByAuthors', article.authors, function (err, moreByAuthor) {
                     if (err) throw  err;
                     else Session.set('moreByAuthor', moreByAuthor);
@@ -29,40 +29,55 @@ if(Meteor.isClient){
     };
 
     Template.article.helpers({
-        more_author_list: function(){
-            return Session.get('moreByAuthor').slice(0,3);
+        more_author_list: function () {
+            return Session.get('moreByAuthor').slice(0, 3);
         },
-        more_source_list: function(){
-            return Session.get('moreBySource').slice(0,3);
+        more_source_list: function () {
+            return Session.get('moreBySource').slice(0, 3);
         },
-        more_topic_list: function(){
-            return Session.get('moreByKeyword').slice(0,3);
+        more_topic_list: function () {
+            return Session.get('moreByKeyword').slice(0, 3);
+        },
+        hasAuthorList: function () {
+            var aList = Session.get('moreByAuthor');
+            if(aList.length > 0) return true;
+            return false;
+        },
+        hasSourceList: function () {
+            var aList = Session.get('moreBySource');
+            if(aList.length > 0) return true;
+            return false;
+        },
+        hasTopicList: function () {
+            var aList = Session.get('moreByKeyword');
+            if(aList.length > 0) return true;
+            return false;
         }
     });
 
     Template.display.helpers({
-        body: function (){
+        body: function () {
             return Session.get('mainArticle').html;
         },
-        title: function(){
+        title: function () {
             return Session.get('mainArticle').title;
         },
-        source: function(){
+        source: function () {
             return Session.get('mainArticle').source;
         },
-        author: function(){
+        author: function () {
             var returnString = ""
             var authors = Session.get('mainArticle').authors;
-            authors.forEach(function(author){
+            authors.forEach(function (author) {
                 returnString += author;
                 returnString += ", ";
             })
             return returnString.substring(0, returnString.length - 2);
         },
-        buttonStyle: function(articleId){
+        buttonStyle: function (articleId) {
             var color = "grey";
             var article = Session.get('mainArticle');
-            if(article.liked)
+            if (article.liked)
                 color = "red";
             return color;
         }
@@ -72,10 +87,10 @@ if(Meteor.isClient){
 
         $(document).on('click', '.panel-more', function (e) {
             var id = e.target.id;
-            Meteor.call('getArticleById',id,function(err,article){
+            Meteor.call('getArticleById', id, function (err, article) {
                 if (err) throw err;
-                else{
-                    Session.set('mainArticle',article);
+                else {
+                    Session.set('mainArticle', article);
                     Meteor.call('searchByAuthors', article.authors, function (err, moreByAuthor) {
                         if (err) throw  err;
                         else Session.set('moreByAuthor', moreByAuthor);
@@ -90,7 +105,7 @@ if(Meteor.isClient){
                         else Session.set('moreByKeyword', moreByKeyWord);
                     });
                 }
-                Router.go('/article/' +id);
+                Router.go('/article/' + id);
             });
 
 
@@ -100,12 +115,12 @@ if(Meteor.isClient){
             //var curr = Session.get('currentArticle');
             //e.stopPropagation();
             var article = Session.get('mainArticle');
-            if(!article.liked){
-                Meteor.call('likeMainArticle', article._id.valueOf(), function (err,article) {
+            if (!article.liked) {
+                Meteor.call('likeMainArticle', article._id.valueOf(), function (err, article) {
                     if (err) throw err;
                     else Session.set('mainArticle', article);
                 });
-            }else{
+            } else {
                 Meteor.call('unlikeMainArticle', article._id.valueOf(), function (err, article) {
                     if (err) throw err;
                     else Session.set('mainArticle', article);
@@ -115,36 +130,34 @@ if(Meteor.isClient){
 
         $(document).on('click', '#view-more-author', function (e) {
             var authors = "";
-            Session.get('mainArticle').authors.forEach(function(author){
+            Session.get('mainArticle').authors.forEach(function (author) {
                 authors += author + " ";
             });
-            Session.set('searchTerm',"Author(s): " +  authors);
-            Session.set('searchResults',Session.get('moreByAuthor'));
+            Session.set('searchTerm', "Author(s): " + authors);
+            Session.set('searchResults', Session.get('moreByAuthor'));
             var search_val = authors.replace(" ", "-");
-            Router.go('/results/authors/'+search_val);
+            Router.go('/results/authors/' + search_val);
         });
 
         $(document).on('click', '#view-more-topic', function (e) {
             var topics = "";
-            Session.get('mainArticle').keywords.forEach(function(word){
+            Session.get('mainArticle').keywords.forEach(function (word) {
                 topics += word + " ";
             });
-            Session.set('searchTerm',"Topic(s): " +  topics);
-            Session.set('searchResults',Session.get('moreByKeyword'));
+            Session.set('searchTerm', "Topic(s): " + topics);
+            Session.set('searchResults', Session.get('moreByKeyword'));
             var search_val = topics.replace(" ", "-");
-            Router.go('/results/topic/'+search_val);
+            Router.go('/results/topic/' + search_val);
         });
 
         $(document).on('click', '#view-more-source', function (e) {
             var source = Session.get('mainArticle').source;
-            Session.set('searchTerm',"Source: " +  source);
-            Session.set('searchResults',Session.get('moreBySource'));
-            Router.go('/results/source/'+source);
+            Session.set('searchTerm', "Source: " + source);
+            Session.set('searchResults', Session.get('moreBySource'));
+            Router.go('/results/source/' + source);
         });
 
     })();
-
-
 
 
 }

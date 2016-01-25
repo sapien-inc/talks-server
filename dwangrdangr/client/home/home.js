@@ -1,5 +1,10 @@
 if (Meteor.isClient) {
 
+    Template.home.rendered = function(){
+        console.log(Meteor.user());
+        if(Meteor.user()) Router.go('/mainpage');
+    };
+
     (function () {
 
         $(document).on('click', '#new-account', function (e) {

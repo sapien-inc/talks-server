@@ -125,8 +125,9 @@ Meteor.methods({
 
     getSortedArticles: function () {
         var articles = Articles.find().fetch();
-        sortArticles(Meteor.userId(), articles);
-        appendLikes(articles, Meteor.userId());
+        var prefs = calculateTops(Meteor.userId());
+        articles = sortArticles(Meteor.userId(), articles);
+        articles = appendLikes(articles, Meteor.userId());
         return articles.slice(0, 25);
     },
 
