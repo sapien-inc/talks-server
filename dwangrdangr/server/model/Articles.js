@@ -3,7 +3,9 @@ Articles = new Mongo.Collection('articles');
 getArticlesByAuthors = function(authors){
     var matches = [];
     authors.forEach(function (author) {
-        var authorMatches = Articles.find({authors: author}).fetch();
+        var regex = "(.?)" + author + "(.?)";
+        var options = "ims";
+        var authorMatches = Articles.find({authors: {$regex:regex,$options:options}}).fetch();
         authorMatches.forEach(function (article) {
             matches.push(article)
         });
@@ -51,7 +53,6 @@ getArticlesByTerm = function (term) {
         matchArrays.push(keyWordMatches);
         matchArrays.push(sourceMatches);
         matchArrays.push(htmlMatches);
-
 
     });
 

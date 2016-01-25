@@ -7,17 +7,17 @@
                     <h4 >Sources</h4>
                     <div class="top-row">
                         {{#each top_sites}}
-                            <div class="top-list-box">
+                            <div class="top-list-box top-source-box">
                                 {{>topPanel}}
                             </div>
                         {{/each}}
                     </div>
                 </div>
                 <div class="panel-group" id="top-authors">
-                    <h4 >Authors</h4>
+                    <h4>Authors</h4>
                     <div class="top-row">
                         {{#each top_authors}}
-                            <div class="top-list-box">
+                            <div class="top-list-box top-author-box">
                                 {{>topPanel}}
                             </div>
                         {{/each}}
@@ -28,7 +28,7 @@
                     <h4 >Topics</h4>
                     <div class="top-row">
                         {{#each top_keywords}}
-                            <div class="top-list-box">
+                            <div class="top-list-box top-topic-box">
                                 {{>topPanel}}
                             </div>
                         {{/each}}
@@ -66,7 +66,7 @@
 <template name="topPanel">
     <div class="panel panel-default panel-top" id="{{this}}">
         <div class="panel panel-heading">
-            <h4>{{this}}</h4>
+            <h6>{{this}}</h6>
         </div>
     </div>
 </template>

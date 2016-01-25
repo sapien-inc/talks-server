@@ -2,7 +2,6 @@ if (Meteor.isClient) {
     (function () {
         // Add slideDown animation to dropdown
         $(document).on('show.bs.dropdown', '.dropdown', function (e) {
-            console.log("fsdfds");
             $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
         });
 
@@ -27,14 +26,12 @@ if (Meteor.isClient) {
             Meteor.call('getLikedArticles', function (err, res) {
                 if (err) throw err;
                 else {
-                    console.log(res);
                     Session.set('likedArticles', res);
 
                     Meteor.call('getUserPrefs', function (err, res) {
                         if (err) throw err;
                         else {
                             Session.set('userPrefs', res);
-                            console.log(res);
                             Router.go('/profile');
                         }
                     })

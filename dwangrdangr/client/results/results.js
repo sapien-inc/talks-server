@@ -28,7 +28,7 @@ if (Meteor.isClient) {
     }
 
     else if (searchType == 'authors') {
-      Meteor.call('searchByAuthors', currentSearch, function (err, res) {
+      Meteor.call('searchByAuthors', [currentSearch], function (err, res) {
         if (err) throw  err;
         Session.set('searchResults', res);
         Session.set('searchTerm',"Author(s): "+ currentSearch);
@@ -36,7 +36,7 @@ if (Meteor.isClient) {
     }
 
     else if (searchType == 'topic') {
-      Meteor.call('searchByKeywords', currentSearch, function (err, res) {
+      Meteor.call('searchByKeywords', [currentSearch], function (err, res) {
         if (err) throw  err;
         Session.set('searchResults', res);
         Session.set('searchTerm',"Topics: "+ currentSearch);

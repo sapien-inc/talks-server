@@ -133,11 +133,11 @@ Meteor.methods({
     getArticleById: function (articleId) {
 
         // drew
-        var article = Articles.findOne({_id: articleId});
+        //var article = Articles.findOne({_id: articleId});
 
         //harry
-        //var objId = new Mongo.ObjectID(articleId);
-        //var article = Articles.findOne({_id: objId});
+        var objId = new Mongo.ObjectID(articleId);
+        var article = Articles.findOne({_id: objId});
 
         var articles = [article];
         articles = appendLikes(articles, Meteor.userId());
