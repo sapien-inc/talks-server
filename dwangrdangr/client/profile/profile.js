@@ -94,15 +94,20 @@ if (Meteor.isClient) {
 
         $(document).on('click', '.list-group-item', function (e) {
             // Get rid of any and all other active list-group-items
-            $('.list-group .active').removeClass('active');
+            //$('.list-group .active').removeClass('active');
 
             // Add the active class to this item
-            $(this).addClass("active");
+            //$(this).addClass("active");
+
+            console.log($(this));
 
             var id = $(this)[0].id;
 
             Meteor.call('getArticleById', id, function (err, res) {
-                Session.set('currentArticle', res);
+                if(err) throw err;
+                console.log(res);
+                Router.go('/article/' + id);
+                Session.set('mainArticle', res);
             });
         });
     })();
