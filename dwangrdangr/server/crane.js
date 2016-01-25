@@ -113,6 +113,18 @@ Meteor.methods({
         return articles;
     },
 
+    searchByAuthors: function (authors) {
+        return getArticlesByAuthors(authors);
+    },
+
+    searchByKeywords:function(keywords){
+        return getArticlesByKeywords(keywords);
+    },
+
+    searchBySource:function(source){
+        return getArticlesBySource(source);
+    },
+
     callPy: function (url) {
         var childProcess = Npm.require("child_process");
         var Fiber = Npm.require('fibers');

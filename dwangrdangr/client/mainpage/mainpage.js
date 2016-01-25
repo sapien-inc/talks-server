@@ -96,7 +96,7 @@ if (Meteor.isClient) {
             }
         });
 
-        $(document).on('click', '.list-group-item', function (e) {
+        $(document).on('click', '.suggested-article', function (e) {
             // Get rid of any and all other active list-group-items
             $('.list-group .active').removeClass('active');
 
@@ -127,6 +127,19 @@ if (Meteor.isClient) {
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+        $(document).on('click', '.news-feed-trend', function (e) {
+            var searchQuery = e.target.innerText.toLowerCase();
+
+            Meteor.call('searchBySource', searchQuery, function (err, res) {
+                if (err) throw  err;
+                Session.set('searchResults', res);
+                Session.set('searchTerm',"Search: "+ searchQuery);
+                Router.go('/results/' + 'source/' + searchQuery, {searchVal:searchQuery});
+            })
+        });
+
+
 
     })();
 

@@ -136,7 +136,7 @@
 
 #sites-container {
     position:absolute;
-    bottom:10%;
+    bottom:26%;
     left:30%;
 }
 
@@ -147,7 +147,7 @@
 #hot-sites-header{
     font-size: 30px;
     position:absolute;
-    top:56%;
+    top:47%;
     width: 50%;
     left:37%;
 }
@@ -157,10 +157,54 @@
     margin-left:15px;
     border-radius: 25px;
     width:145px;
-    height:110px;
-    font-size:12px;
+    height:65px;
+    line-height:45px;
+    font-size:13px;
     text-align: center;
-    vertical-align: middle;
+    font-family: 'Raleway', sans-serif;
+    color:black;
+    font-weight: bold;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #black;
+
+    background-color: 	#87CEFA;
+    /* For WebKit (Safari, Chrome, etc) */
+    background: 	#87CEFA -webkit-gradient(linear, left top, left bottom, from(#F0F8FF), to(	#87CEFA)) no-repeat;
+    /* Mozilla,Firefox/Gecko */
+    background: 	#87CEFA -moz-linear-gradient(top, #F0F8FF, 	#87CEFA) no-repeat;
+    /* IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F0F8FF, endColorstr=	#87CEFA) no-repeat;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00E4FF, endColorstr=#00E4FF)" no-repeat;
 }
+
+
+.news-feed-trend:first-child {
+    border-top-right-radius: 25px !important;
+    border-top-left-radius: 25px !important;
+}
+
+.news-feed-trend:last-child {
+    border-bottom-right-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+}
+
+.trending-divider {
+    position:absolute;
+    top: 30%;
+    width: 300px;
+    left:50.5%;
+}
+
+.sites-divider {
+    position:absolute;
+    top: 55%;
+    width: 220px;
+    left:53%;
+}
+
+
 
 

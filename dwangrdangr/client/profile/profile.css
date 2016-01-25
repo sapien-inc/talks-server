@@ -13,6 +13,7 @@
 #profile-article-list{
     overflow: scroll;
     height: inherit;
+    width: 100%;
 }
 
 .top-row{
@@ -22,8 +23,6 @@
 .top-list-box{
     float: left;
 }
-
-
 
 .liked-articles-contianer{
     width: inherit;
@@ -43,15 +42,11 @@
     overflow-y: scroll;
 }
 
-.panel-group{
-
-}
-
 .top-list-box{
     float: left;
 }
 
-.profile-header{
+.liked-profile-header{
     font-family: 'Playfair Display', serif;
     position: absolute;
     left: 23%;

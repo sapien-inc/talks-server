@@ -5,14 +5,43 @@ if (Meteor.isClient) {
   });
 
   Template.results.rendered = function(){
+
     var currentSearch = Router.current().params.search;
-    Meteor.call('searchArticles', currentSearch, function (err, res) {
-      if (err) throw  err;
-      var search_term = Session.get('searchTerm');
-      if(search_term.indexOf(currentSearch) < 0)
-        Session.set('searchTerm',"Search: "+ currentSearch);
-      Session.set('searchResults', res);
-    });
+    var searchType = Router.current().params.type;
+
+    currentSearch = currentSearch.replace("-", " ");
+
+    if (searchType == 'any') {
+      Meteor.call('searchArticles', currentSearch, function (err, res) {
+        if (err) throw  err;
+          Session.set('searchTerm', "Search: " + currentSearch);
+          Session.set('searchResults', res);
+      });
+    }
+
+    else if (searchType == 'source') {
+      Meteor.call('searchBySource', currentSearch, function (err, res) {
+        if (err) throw  err;
+        Session.set('searchResults', res);
+        Session.set('searchTerm',"Source: "+ currentSearch);
+      })
+    }
+
+    else if (searchType == 'authors') {
+      Meteor.call('searchByAuthors', currentSearch, function (err, res) {
+        if (err) throw  err;
+        Session.set('searchResults', res);
+        Session.set('searchTerm',"Author(s): "+ currentSearch);
+      })
+    }
+
+    else if (searchType == 'topic') {
+      Meteor.call('searchByKeywords', currentSearch, function (err, res) {
+        if (err) throw  err;
+        Session.set('searchResults', res);
+        Session.set('searchTerm',"Topics: "+ currentSearch);
+      })
+    }
   };
 
   Template.results.helpers({
