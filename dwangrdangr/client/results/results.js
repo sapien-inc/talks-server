@@ -6,6 +6,7 @@ if (Meteor.isClient) {
 
   Template.results.rendered = function(){
     var currentSearch = Router.current().params.search;
+
     currentSearch = currentSearch.replace("-", " ");
     Meteor.call('searchArticles', currentSearch, function (err, res) {
       if (err) throw  err;

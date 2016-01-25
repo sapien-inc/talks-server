@@ -30,7 +30,9 @@
   <h1 class="article-title">{{title}}</h1>
   <h3 class="article-author">{{author}}</h3>
   <h4 class="article-source">{{source}}</h4>
-
+    <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart article-heart"
+       style="color:{{buttonStyle this._id.valueOf}}">
+    </a>
   <p class="article-body" align="justify">
     {{{body}}}
   </p>

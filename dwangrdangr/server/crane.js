@@ -23,6 +23,38 @@ Meteor.methods({
         return calculateTops(userId);
     },
 
+    likeMainArticle: function(articleID){
+        //harry
+        //var mongoId = new Mongo.ObjectID(articleID)
+        //var like = addLike(Meteor.userId(), mongoId);
+        //var article = Articles.findOne({_id: mongoId});
+
+        //drew
+        var like = addLike(Meteor.userId(), articleID);
+        var article = Articles.findOne({_id: articleID});
+
+
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
+    },
+
+    unlikeMainArticle:function(articleID){
+        //harry
+        //var mongoId = new Mongo.ObjectID(articleID)
+        //var like = addLike(Meteor.userId(), mongoId);
+        //var article = Articles.findOne({_id: mongoId});
+
+        //drew
+        var like = removeLike(Meteor.userId(), articleID);
+        var article = Articles.findOne({_id: articleID});
+
+
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
+    },
+
     likeArticle: function (articleID, selection, calculate) {
         //harry
         //var mongoId = new Mongo.ObjectID(articleID)
@@ -91,7 +123,9 @@ Meteor.methods({
         //var objId = new Mongo.ObjectID(articleId);
         //var article = Articles.findOne({_id: objId});
 
-        return article;
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
     },
 
 

@@ -5,7 +5,7 @@ Router.map(function () {
     this.route('about', {path: '/about'});
     this.route('home', {path: '/'});
     this.route('mainpage', {path: '/mainpage'});
-    this.route('profile', {path: '/profile'});
+    this.route('profile', {path: '/profile/:id?'});
     this.route('results', {path: '/results/:search?', data:function(){
         return this.params
     }});

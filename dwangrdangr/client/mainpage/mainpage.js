@@ -35,7 +35,7 @@ if (Meteor.isClient) {
                 }
             });
             return color;
-        },
+        }
     });
 
     //Template.mainArticle.onCreated(function () {
