@@ -12,9 +12,6 @@ getArticlesByAuthors = function(authors){
 };
 
 getArticlesBySource = function(source){
-    //var regex = "(.?)" + source + "(.?)";
-    //var options = "ims";
-    //var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
     var sourceMatches = Articles.find({source:source}).fetch();
     return cleanDuplicates(sourceMatches);
 };
