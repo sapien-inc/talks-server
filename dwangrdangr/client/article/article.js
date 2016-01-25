@@ -5,14 +5,40 @@ if(Meteor.isClient){
 
 
     Template.article.rendered = function(){
-        var currentID = Router.current().params.id
-        Meteor.call('getArticleById',currentID,function(err,res){
-            if (err){
-                throw err
+        var currentID = Router.current().params.id;
+        Meteor.call('getArticleById',currentID,function(err,article){
+            if (err) throw err;
+            else{
+                Session.set('mainArticle',article);
+                Meteor.call('searchByAuthors', article.authors, function (err, moreByAuthor) {
+                    if (err) throw  err;
+                    else Session.set('moreByAuthor', moreByAuthor);
+                });
+
+                Meteor.call('searchBySource', article.source, function (err, moreBySource) {
+                    if (err) throw  err;
+                    else Session.set('moreBySource', moreBySource);
+                });
+                Meteor.call('searchByKeywords', article.keywords, function (err, moreByKeyWord) {
+                    if (err) throw  err;
+                    else Session.set('moreByKeyword', moreByKeyWord);
+                });
             }
-            Session.set('mainArticle',res);
-        })
-    }
+        });
+
+    };
+
+    Template.article.helpers({
+        more_author_list: function(){
+            return Session.get('moreByAuthor').slice(0,3);
+        },
+        more_source_list: function(){
+            return Session.get('moreBySource').slice(0,3);
+        },
+        more_topic_list: function(){
+            return Session.get('moreByKeyword').slice(0,3);
+        }
+    });
 
     Template.display.helpers({
         body: function (){
@@ -36,51 +62,61 @@ if(Meteor.isClient){
     });
 
     (function () {
-        // Add slideDown animation to dropdown
-        $(document).on('click', '#button-more-author', function (e) {
-            var authors = Session.get('mainArticle').authors;
-            var search_val = "";
-            authors.forEach(function (author) {
-                search_val += author + " ";
-            });
-            Meteor.call('searchArticles', search_val, function (err, res) {
-                if (err) throw  err;
+
+        $(document).on('click', '.panel-more', function (e) {
+            var id = e.target.id;
+            console.log(e.target);
+            Meteor.call('getArticleById',id,function(err,article){
+                if (err) throw err;
                 else{
-                    Session.set('searchTerm',"Author(s): " +  search_val);
-                    Session.set('searchResults', res);
-                    search_val = search_val.replace(" ","-");
-                    Router.go('/results/'+search_val);
+                    Session.set('mainArticle',article);
+                    Meteor.call('searchByAuthors', article.authors, function (err, moreByAuthor) {
+                        if (err) throw  err;
+                        else Session.set('moreByAuthor', moreByAuthor);
+                    });
+
+                    Meteor.call('searchBySource', article.source, function (err, moreBySource) {
+                        if (err) throw  err;
+                        else Session.set('moreBySource', moreBySource);
+                    });
+                    Meteor.call('searchByKeywords', article.keywords, function (err, moreByKeyWord) {
+                        if (err) throw  err;
+                        else Session.set('moreByKeyword', moreByKeyWord);
+                    });
                 }
+                Router.go('/article/' +id);
             });
+
+
         });
 
-        $(document).on('click', '#button-more-source', function (e) {
+        $(document).on('click', '#view-more-author', function (e) {
+            var authors = "";
+            Session.get('mainArticle').authors.forEach(function(author){
+                authors += author + " ";
+            });
+            Session.set('searchTerm',"Author(s): " +  authors);
+            Session.set('searchResults',Session.get('moreByAuthor'));
+            var search_val = authors.replace(" ", "-");
+            Router.go('/results/'+search_val);
+        });
+
+        $(document).on('click', '#view-more-topic', function (e) {
+            var topics = "";
+            Session.get('mainArticle').keywords.forEach(function(word){
+                topics += word + " ";
+            });
+            Session.set('searchTerm',"Topic(s): " +  topics);
+            Session.set('searchResults',Session.get('moreByKeyword'));
+            var search_val = topics.replace(" ", "-");
+            Router.go('/results/'+search_val);
+        });
+
+        $(document).on('click', '#view-more-source', function (e) {
             var source = Session.get('mainArticle').source;
-            Meteor.call('searchArticles', source, function (err, res) {
-                if (err) throw  err;
-                else{
-                    Session.set('searchTerm',"Source: " +  source);
-                    Session.set('searchResults', res);
-                    Router.go('/results/'+source);
-                }
-            });
-        });
-
-        $(document).on('click', '#button-more-topic', function (e) {
-            var topics = Session.get('mainArticle').keywords;
-            var search_val = "";
-            topics.forEach(function (topic) {
-                search_val += topic + " ";
-            });
-            Meteor.call('searchArticles', search_val, function (err, res) {
-                if (err) throw  err;
-                else{
-                    Session.set('searchTerm', "Topics: " + search_val);
-                    Session.set('searchResults', res);
-                    search_val = search_val.replace(" ","-");
-                    Router.go('/results/'+search_val);
-                }
-            });
+            Session.set('searchTerm',"Source: " +  source);
+            Session.set('searchResults',Session.get('moreBySource'));
+            Router.go('/results/'+source);
         });
 
     })();

@@ -32,34 +32,63 @@ h4.article-source {
 }
 
 
-button.more{
-    color: grey;
-    border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    margin-bottom: 0px;
-    /*background:  url('/beige.jpg') no-repeat left top;*/
-    background-color: #333333;
-    border-color: transparent;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    height: 20px;
-    display: -webkit-box;
+h4.more{
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    font-size: 15px;
+    width: auto;
 }
 
-div.content, div.more{
-    /*border-color: #3596e0;*/
+h5.more{
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    font-size: 15px;
+    text-align: end;
+    width: auto;
+    cursor: pointer;
+}
+
+.container-article{
     border-style: none;
     float: left;
 }
 
 #main-article-container{
     position:absolute;
-    top:15%;
+    top:10%;
     left:5%;
     width:83%;
 }
 
-.more-div{
+#more-articles-container{
+    position: absolute;
+    top:6% !important;
+    right:5%;
+    width:15%
+}
+
+.container-more{
     position:absolute;
     right: 13%;
     top:15%;
+    border-style: none;
+    float: left;
+}
+
+.panel-more{
+    width: 100%;
+    height:0%;
+    cursor: pointer;
+    margin-bottom: 0% !important;
+}
+
+.panel-more-text{
+    width: 100%;
+    height: 100%;
+}
+
+.panel-more-heading{
+    margin-bottom: 0%;
+    cursor: pointer;
+
 }
