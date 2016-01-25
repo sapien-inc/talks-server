@@ -22,6 +22,10 @@ if (Meteor.isClient) {
         liked_articles: function () {
             return Session.get('likedArticles');
         },
+        has_no_likes:function(){
+            if(Session.get('likedArticles').length > 0) return false;
+            return true;
+        },
         buttonStyle: function (articleId) {
             var articles = Session.get('likedArticles');
             var color = "grey";
@@ -53,6 +57,24 @@ if (Meteor.isClient) {
         top_keywords: function () {
             return Session.get('userPrefs').topKeywords.slice(0,5);
         },
+        has_top_sites: function () {
+            if(Session.get('userPrefs').topSources.length > 0 ) return true;
+            return false;
+        },
+        has_top_authors: function () {
+            if(Session.get('userPrefs').topAuthors.length > 0) return true;
+            return false;
+        },
+        has_top_keywords: function () {
+            if(Session.get('userPrefs').topKeywords.length > 0) return true;
+            return false;
+        },
+        has_no_tops: function(){
+            if(Session.get('userPrefs').topSources.length > 0  || Session.get('userPrefs').topAuthors.length > 0 || Session.get('userPrefs').topKeywords.length > 0) return false;
+            return true;
+        }
+
+
     });
 
     (function () {

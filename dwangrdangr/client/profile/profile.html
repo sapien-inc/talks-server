@@ -1,52 +1,63 @@
 <template name="profile">
     <div class="container-fluid row" id="profile-page">
         <div class="container-fluid col-sm-4" id="profile-top">
-            <h2 class= "profile-header panel-group">Favorites</h2>
-            <div class = "list-group list-group-tops">
-                <div class="panel-group" id="top-sites">
-                    <h4 >Sources</h4>
-                    <div class="top-row">
-                        {{#each top_sites}}
-                            <div class="top-list-box">
-                                {{>topPanel}}
-                            </div>
-                        {{/each}}
+            <h2 class="profile-header panel-group">Favorites</h2>
+            <div class="list-group list-group-tops">
+                {{#if has_no_tops}}
+                    <h3 class="missing-content">Start liking articles so we can generate your favorites</h3>
+                {{/if}}
+                {{#if has_top_sites}}
+                    <div class="panel-group" id="top-sites">
+                        <h4>Sources</h4>
+                        <div class="top-row">
+                            {{#each top_sites}}
+                                <div class="top-list-box">
+                                    {{>topPanel}}
+                                </div>
+                            {{/each}}
+                        </div>
                     </div>
-                </div>
-                <div class="panel-group" id="top-authors">
-                    <h4 >Authors</h4>
-                    <div class="top-row">
-                        {{#each top_authors}}
-                            <div class="top-list-box">
-                                {{>topPanel}}
-                            </div>
-                        {{/each}}
-                    </div>
+                {{/if}}
+                {{#if has_top_authors}}
+                    <div class="panel-group" id="top-authors">
+                        <h4>Authors</h4>
+                        <div class="top-row">
+                            {{#each top_authors}}
+                                <div class="top-list-box">
+                                    {{>topPanel}}
+                                </div>
+                            {{/each}}
+                        </div>
 
-                </div>
-                <div class="panel-group" id="top-keywords">
-                    <h4 >Topics</h4>
-                    <div class="top-row">
-                        {{#each top_keywords}}
-                            <div class="top-list-box">
-                                {{>topPanel}}
-                            </div>
-                        {{/each}}
                     </div>
-
-                </div>
+                {{/if}}
+                {{#if has_top_keywords}}
+                    <div class="panel-group" id="top-keywords">
+                        <h4>Topics</h4>
+                        <div class="top-row">
+                            {{#each top_keywords}}
+                                <div class="top-list-box">
+                                    {{>topPanel}}
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/if}}
             </div>
         </div>
         <div class="container-fluid col-sm-8" id="profile-liked">
-                {{>likedArticles}}
+            {{>likedArticles}}
         </div>
     </div>
 </template>
 
 <template name="likedArticles">
-    <div class="liked-articles-container" >
-        <h2 class= "profile-header">Liked Articles</h2>
+    <div class="liked-articles-container">
+        <h2 class="profile-header">Liked Articles</h2>
         <div class="list-group" id="profile-article-list">
+            {{#if has_no_likes}}
+                <h3 class="missing-content">You haven't liked any articles yet</h3>
+            {{/if}}
             {{#each liked_articles}}
                 <div class="list-group-box">
                     <a id="{{this._id.valueOf}}" class="list-group-item">
