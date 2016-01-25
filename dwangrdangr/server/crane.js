@@ -2,6 +2,8 @@
 //ObjectId = Npm.require('mongodb').ObjectID;
 
 HotSites = new Mongo.Collection('hotSites');
+Trending = new Mongo.Collection('trending');
+
 
 if (Meteor.isServer) {
     // This code only runs on the server
@@ -27,12 +29,48 @@ Meteor.methods({
     },
 
     getHotTopics: function(){
-        return ['no','trending','topics','yet',':('];
+        var trending = Trending.find({}).fetch();
+        if (!trending){
+            return [];
+        }
+        return trending;
     },
 
     getUserPrefs:function(){
         var userId = Meteor.userId();
         return calculateTops(userId);
+    },
+
+    likeMainArticle: function(articleID){
+        //harry
+        var mongoId = new Mongo.ObjectID(articleID)
+        var like = addLike(Meteor.userId(), mongoId);
+        var article = Articles.findOne({_id: mongoId});
+
+        //drew
+        //var like = addLike(Meteor.userId(), articleID);
+        //var article = Articles.findOne({_id: articleID});
+
+
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
+    },
+
+    unlikeMainArticle:function(articleID){
+        //harry
+        var mongoId = new Mongo.ObjectID(articleID)
+        var like = removeLike(Meteor.userId(), mongoId);
+        var article = Articles.findOne({_id: mongoId})
+
+        //drew
+        //var like = removeLike(Meteor.userId(), articleID);
+        //var article = Articles.findOne({_id: articleID});
+
+
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
     },
 
     likeArticle: function (articleID, selection, calculate) {
@@ -103,7 +141,9 @@ Meteor.methods({
         var objId = new Mongo.ObjectID(articleId);
         var article = Articles.findOne({_id: objId});
 
-        return article;
+        var articles = [article];
+        articles = appendLikes(articles, Meteor.userId());
+        return articles[0];
     },
 
 

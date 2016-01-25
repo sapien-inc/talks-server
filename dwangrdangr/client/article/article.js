@@ -58,6 +58,13 @@ if(Meteor.isClient){
                 returnString += ", ";
             })
             return returnString.substring(0, returnString.length - 2);
+        },
+        buttonStyle: function(articleId){
+            var color = "grey";
+            var article = Session.get('mainArticle');
+            if(article.liked)
+                color = "red";
+            return color;
         }
     });
 
@@ -87,6 +94,23 @@ if(Meteor.isClient){
             });
 
 
+        });
+
+        $(document).on('click', '.article-heart', function (e) {
+            //var curr = Session.get('currentArticle');
+            //e.stopPropagation();
+            var article = Session.get('mainArticle');
+            if(!article.liked){
+                Meteor.call('likeMainArticle', article._id.valueOf(), function (err,article) {
+                    if (err) throw err;
+                    else Session.set('mainArticle', article);
+                });
+            }else{
+                Meteor.call('unlikeMainArticle', article._id.valueOf(), function (err, article) {
+                    if (err) throw err;
+                    else Session.set('mainArticle', article);
+                });
+            }
         });
 
         $(document).on('click', '#view-more-author', function (e) {

@@ -60,6 +60,12 @@ h5.more{
     width:83%;
 }
 
+.article-heart{
+    float: left;
+    font-size: 25px;
+    cursor:pointer;
+}
+
 #more-articles-container{
     position: absolute;
     top:13% !important;

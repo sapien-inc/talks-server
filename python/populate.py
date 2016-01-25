@@ -19,14 +19,14 @@ SENTENCES_COUNT = 3
 client = MongoClient('mongodb://127.0.0.1:3001')
 database = client.meteor
 
-urls = newspaper.popular_urls()[0:15]
+urls = newspaper.popular_urls()[0:30]
 
 articles = []
 
 for url in urls:
 	try:
 		paper = newspaper.build(url)
-		for a in paper.articles[0:15]:
+		for a in paper.articles[0:30]:
 			article = Article(a.url, keep_article_html=True)
 			article.source = paper.brand
 			articles.append(article)

@@ -16,8 +16,6 @@ getArticlesBySource = function(source){
     //var options = "ims";
     //var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
     var sourceMatches = Articles.find({source:source}).fetch();
-    console.log(source)
-    console.log(sourceMatches)
     return cleanDuplicates(sourceMatches);
 };
 

@@ -6,8 +6,13 @@ client = MongoClient('mongodb://127.0.0.1:3001')
 database = client.meteor
 
 popular = newspaper.popular_urls()
-print(popular)
+
+hot = ['bieber','isis','trump','cruz','blizzard','hilary','patriots','snow']
+
 brands = []
+
+for hot_topic in hot:
+	database.trending.insert({'topic':hot_topic})
 
 # for url in popular:
 # 	paper = newspaper.build(url, memoize_articles=False)

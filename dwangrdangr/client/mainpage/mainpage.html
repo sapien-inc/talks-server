@@ -3,8 +3,9 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy' rel='stylesheet' type='text/css'>
     {{#if currentUser}}
-      <h2 id="news-feed-header">{{currentUser.username}}'s News Feed</h2>
+      <h2 id="news-feed-header">Home Page</h2>
         {{>suggestedArticles}}
         {{>trending}}
         {{>hotSites}}
@@ -14,7 +15,7 @@
 </template>
 
 <template name="suggestedArticles">
-  <h2 id="suggested-header">Suggested</h2>
+  <h2 id="suggested-header">Suggested Articles</h2>
   <div class="wrapper">
         <div id="suggested-container" class="list-group">
             {{#each suggested_articles}}
@@ -43,7 +44,7 @@
   <hr class="news-feed-divider trending-divider">
   <ul id="topics-container" class="list-inline">
     {{#each trending_topics}}
-      <li class="list-group-item news-feed-trend trending-topic" value="{{this}}"> {{this.toUpperCase}} </li>
+      <li class="list-group-item news-feed-trend trending-topic" value="{{this.topic}}"> {{this.topic}} </li>
     {{/each}}
   </ul>
 </template>

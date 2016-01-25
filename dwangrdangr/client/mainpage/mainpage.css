@@ -64,7 +64,7 @@
 #suggested-container{
     position:static;
     width: 20%;
-    height:400px;
+    height:450px;
     top: 5%;
     overflow-x: visible;
     overflow-y: scroll;
@@ -90,7 +90,7 @@
     background-color: #269abc;
     z-index: -1;
     position:relative;
-    width:350px;
+    width:500px;
 
 }
 
@@ -107,27 +107,29 @@
 
 .wrapper {
     position:relative;
+    top:5%;
 }
 
 #news-feed-header {
-    font-size: 30px;
+    font-size: 43px;
     position:absolute;
-    left:45%;
+    left:42%;
     top:5%;
+    font-family: 'Sorts Mill Goudy', serif;
 }
 
 #topics-container {
     position:absolute;
-    top:37%;
-    left:30%;
+    top:45%;
+    left:28%;
 }
 
 #trending-topics-header{
     font-size: 30px;
     position:absolute;
-    top:22%;
+    top:30%;
     width: 50%;
-    left:37%;
+    left:35%;
 }
 
 .trending-topic{
@@ -136,8 +138,8 @@
 
 #sites-container {
     position:absolute;
-    bottom:26%;
-    left:30%;
+    bottom:13%;
+    left:28%;
 }
 
 .hot-site{
@@ -147,15 +149,15 @@
 #hot-sites-header{
     font-size: 30px;
     position:absolute;
-    top:47%;
+    top:60%;
     width: 50%;
-    left:37%;
+    left:35%;
 }
 
 .news-feed-trend{
     font-size:40px;
     margin-left:15px;
-    border-radius: 25px;
+    border-radius: 0px;
     width:145px;
     height:65px;
     line-height:45px;
@@ -166,7 +168,7 @@
     font-weight: bold;
 
     border-style: solid;
-    border-width: 1px;
+    border-width: 0px;
     border-color: #black;
 
     background-color: 	#87CEFA;
@@ -182,27 +184,27 @@
 
 
 .news-feed-trend:first-child {
-    border-top-right-radius: 25px !important;
-    border-top-left-radius: 25px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
 }
 
 .news-feed-trend:last-child {
-    border-bottom-right-radius: 25px !important;
-    border-bottom-left-radius: 25px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
 }
 
 .trending-divider {
     position:absolute;
-    top: 30%;
+    top: 38%;
     width: 300px;
-    left:50.5%;
+    left:48.5%;
 }
 
 .sites-divider {
     position:absolute;
-    top: 55%;
+    top: 68%;
     width: 220px;
-    left:53%;
+    left:51%;
 }
 
 

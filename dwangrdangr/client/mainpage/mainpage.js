@@ -32,6 +32,7 @@ if (Meteor.isClient) {
 
     Template.trending.helpers({
         trending_topics: function(){
+            console.log(Session.get('hotTopics'));
             return Session.get('hotTopics').splice(0,5);
         }
     });
@@ -63,7 +64,7 @@ if (Meteor.isClient) {
                 }
             });
             return color;
-        },
+        }
     });
 
     //Template.mainArticle.onCreated(function () {
@@ -77,8 +78,6 @@ if (Meteor.isClient) {
             e.stopPropagation();
             var articleID = e.target.attributes[0].nodeValue;
             var style = e.target.attributes[2].nodeValue;
-            console.log(articleID)
-            console.log(style)
             if(style.indexOf('grey') >=0){
                 Meteor.call('likeArticle', articleID, function (err, result) {
                     if (err) {
@@ -128,14 +127,25 @@ if (Meteor.isClient) {
             $('[data-toggle="tooltip"]').tooltip();
         });
 
-        $(document).on('click', '.news-feed-trend', function (e) {
+        $(document).on('click', '.hot-site', function (e) {
             var searchQuery = e.target.innerText.toLowerCase();
 
             Meteor.call('searchBySource', searchQuery, function (err, res) {
                 if (err) throw  err;
                 Session.set('searchResults', res);
-                Session.set('searchTerm',"Search: "+ searchQuery);
+                Session.set('searchTerm',"Source: "+ searchQuery);
                 Router.go('/results/' + 'source/' + searchQuery, {searchVal:searchQuery});
+            })
+        });
+
+        $(document).on('click', '.trending-topic', function (e) {
+            var searchQuery = e.target.innerText.toLowerCase();
+
+            Meteor.call('searchByKeywords', [searchQuery], function (err, res) {
+                if (err) throw  err;
+                Session.set('searchResults', res);
+                Session.set('searchTerm',"Topic: "+ searchQuery);
+                Router.go('/results/' + 'topic/' + searchQuery, {searchVal:searchQuery});
             })
         });
 

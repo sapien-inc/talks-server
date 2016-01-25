@@ -11,7 +11,6 @@ if (Meteor.isClient) {
                 Meteor.call('getUserPrefs', function (err, res) {
                     if (err) throw err;
                     else {
-                        console.log(res);
                         Session.set('userPrefs', res);
                     }
                 })
