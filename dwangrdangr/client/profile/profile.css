@@ -1,6 +1,6 @@
 #profile-page{
     position: absolute;
-    top: 50px;
+    top: 3%;
     left: 10%;
     height: 60%;
     width: 80%;
@@ -8,12 +8,17 @@
 
 .list-group-tops{
     width: 100%;
+    position:absolute;
+    top:30%;
 }
 
 #profile-article-list{
+    position:absolute;
     overflow: scroll;
-    height: inherit;
-    width: 100%;
+    height: 300%;
+    width: 80%;
+    left:30%;
+    top:25%;
 }
 
 .top-row{
@@ -21,36 +26,29 @@
 }
 
 .top-list-box{
-    float: left;
+    /*float: left;*/
 }
 
 .liked-articles-contianer{
     width: inherit;
+    position:absolute;
+    height:130%;
 }
 
-.liked-list-group {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
-    /*border-style: solid;*/
-    /*border-color: grey;*/
-    position: absolute;
-    top: 150px;
-    max-height: 600px;
-    width: inherit;
-    overflow-y: scroll;
-}
-
-.top-list-box{
-    float: left;
-}
-
-.liked-profile-header{
+.profile-header{
     font-family: 'Playfair Display', serif;
-    position: absolute;
-    left: 23%;
-    top: 30px;
+    position:absolute;
+    font-size: 150%;
+    left:60%;
+    top:4%;
+}
+
+.favorites-header{
+    font-family: 'Playfair Display', serif;
+    position:absolute;
+    font-size: 150%;
+    left:43%;
+    top:4%;
 }
 
 .panel-top{
@@ -61,4 +59,24 @@
 .missing-content{
     width: 100%;
     text-align: center;
+}
+
+#profile-liked{
+    height:100%;
+}
+
+#top-sites {
+    text-align: center;
+}
+
+#top-keywords{
+    text-align:center;
+}
+
+#top-authors{
+    text-align:center
+}
+
+#profile-top{
+    height:100%;
 }

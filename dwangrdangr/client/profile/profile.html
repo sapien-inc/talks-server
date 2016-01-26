@@ -1,14 +1,15 @@
 <template name="profile">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
     <div class="container-fluid row" id="profile-page">
         <div class="container-fluid col-sm-4" id="profile-top">
-            <h2 class="profile-header panel-group">Favorites</h2>
+            <h2 class="favorites-header panel-group">Favorites</h2>
             <div class="list-group list-group-tops">
                 {{#if has_no_tops}}
                     <h3 class="missing-content">Start liking articles so we can generate your favorites</h3>
                 {{/if}}
                 {{#if has_top_sites}}
                     <div class="panel-group" id="top-sites">
-                        <h4>Sources</h4>
+                        <h4 class="sources-profile-header">Sources</h4>
                         <div class="top-row">
                             {{#each top_sites}}
                                 <div class="top-list-box top-source-box">
@@ -20,10 +21,10 @@
                 {{/if}}
                 {{#if has_top_authors}}
                     <div class="panel-group" id="top-authors">
-                        <h4>Authors</h4>
+                        <h4 class="authors-profile-header">Authors</h4>
                         <div class="top-row">
                             {{#each top_authors}}
-                                <div class="top-list-box top-author-box">]
+                                <div class="top-list-box top-author-box">
                                     {{>topPanel}}
                                 </div>
                             {{/each}}
@@ -32,7 +33,7 @@
                 {{/if}}
                 {{#if has_top_keywords}}
                     <div class="panel-group" id="top-keywords">
-                        <h4>Topics</h4>
+                        <h4 class="topics-profile-header">Topics</h4>
                         <div class="top-row">
                             {{#each top_keywords}}
                                 <div class="top-list-box top-topic-box">
