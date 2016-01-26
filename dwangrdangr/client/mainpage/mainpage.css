@@ -3,16 +3,9 @@
     font-size: 150%;
 }
 
-#article-list {
-    width: 130%;
-    position: relative;
-    right: 30px;
-    bottom: 25px;
-}
-
 .list-group-item {
     background-color: #f8f8f8;
-    font-size: 15px;
+    /*font-size: 15px;*/
     cursor: pointer;
     margin-top: 5px;
     border-bottom-left-radius: 10px;
@@ -32,8 +25,6 @@
     /*border-style: solid;*/
     /*border-color: grey;*/
     position: absolute;
-    top: 150px;
-    max-height: 600px;
     overflow-y: scroll;
 }
 
@@ -42,20 +33,11 @@
     position: relative;
     left: -39%;
     top: 12%;
-    font-size: 25px;
-}
-
-.feed-heart{
-    position:relative;
-    text-decoration:none;
-    font-size: 25px;
-    cursor:default;
-    left:90%;
-    top: 10px;
+    font-size: 170%;
 }
 
 .list-group-item-heading{
-    font-size: 12px;
+    font-size: 90%;
 }
 
 .img{
@@ -73,7 +55,7 @@
 
 .list-group-box{
     background-color: #f8f8f8;
-    font-size: 13px;
+    font-size: 95%;
     margin-top: 5px;
     height: auto;
     width:100%;
@@ -93,7 +75,7 @@
     background-color: #269abc;
     z-index: -1;
     position:relative;
-    width:500px;
+    width:300%;
 
 }
 
@@ -105,7 +87,7 @@
 }
 
 .list-group-item-text {
-    font-size: 10px;
+    font-size: 90%;
 }
 
 .wrapper {
@@ -115,7 +97,6 @@
 }
 
 #news-feed-header {
-    font-size: 43px;
     position:absolute;
     left:42%;
     top:5%;
@@ -135,7 +116,7 @@
 }
 
 #trending-topics-header{
-    font-size: 25px;
+    font-size: 170%;
     position:absolute;
     top:14%;
     width: 50%;
@@ -157,7 +138,7 @@
 }
 
 #hot-sites-header{
-    font-size: 25px;
+    font-size: 170%;
     position:absolute;
     top:60%;
     width: 50%;
@@ -170,13 +151,12 @@
 }
 
 .news-feed-trend{
-    font-size:40px;
     margin-left:15px;
     border-radius: 5px;
     width:145px;
-    height:65px;
+    height:40%;
     line-height:45px;
-    font-size:13px;
+    font-size:80%;
     text-align: center;
     font-family: 'Raleway', sans-serif;
     color:black;

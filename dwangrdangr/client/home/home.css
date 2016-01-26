@@ -14,7 +14,7 @@ h1 {
 #home-slogan {
   font-size: 100%;
   position: relative;
-  top: 42%;
+  top: 44%;
 }
 
 #crane {
@@ -36,6 +36,8 @@ h1 {
 }
 
 .form-signin {
+  position:relative;
+  top:15%;
   max-width: 100%;
   padding: 15px;
   margin: 0 auto;
@@ -61,19 +63,20 @@ h1 {
 }
 
 .form-signin input[type="text"] {
-  margin-bottom: 1%;
+  margin-bottom: -1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 1%;
+  margin-bottom: 1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 #repeat-password {
-  margin-bottom: 1%;
+  margin-bottom: 8px;
+  margin-top: -9px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
