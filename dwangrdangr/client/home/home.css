@@ -1,13 +1,13 @@
 h1 {
   text-shadow: white 0px 0px 2px;
-  line-height: 49px;
+  line-height: 50px;
   position: absolute;
   left: 40%;
   top: 27.5%;
   text-align: center;
   font-size: 420%;
   font-family: 'Playfair Display', serif;
-  width: 250px;
+  width: 20%;
   color: black;
 }
 
@@ -36,7 +36,7 @@ h1 {
 }
 
 .form-signin {
-  max-width: 330px;
+  max-width: 100%;
   padding: 15px;
   margin: 0 auto;
   font-family: 'Playfair Display', serif;
@@ -67,7 +67,7 @@ h1 {
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 8px;
+  margin-bottom: 8%;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -81,7 +81,7 @@ h1 {
 
 .new-account {
   display: block;
-  margin-top: 10px;
+  margin-top: 5%;
   color: grey;
 }
 
