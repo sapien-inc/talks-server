@@ -23,7 +23,7 @@
                         <h4>Authors</h4>
                         <div class="top-row">
                             {{#each top_authors}}
-                                <div class="top-list-box top-author-box">
+                                <div class="top-list-box top-author-box">]
                                     {{>topPanel}}
                                 </div>
                             {{/each}}
@@ -63,7 +63,7 @@
                         <h4 class="list-group-item-heading">{{this.title}}</h4>
                         <p class="list-group-item-text">{{this.source}}</p>
                         <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart feed-heart"
-                           style="color:{{buttonStyle this._id.valueOf}}">
+                           style="color:{{buttonStyle this._id.valueOf}}; text-decoration:none;">
                         </a>
                     </a>
                 </div>

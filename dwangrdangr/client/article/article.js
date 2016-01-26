@@ -122,11 +122,13 @@ if (Meteor.isClient) {
             //e.stopPropagation();
             var article = Session.get('mainArticle');
             if (!article.liked) {
+                $('.article-heart').css({'color':'red'});
                 Meteor.call('likeMainArticle', article._id.valueOf(), function (err, article) {
                     if (err) throw err;
                     else Session.set('mainArticle', article);
                 });
             } else {
+                $('.article-heart').css({'color':'grey'});
                 Meteor.call('unlikeMainArticle', article._id.valueOf(), function (err, article) {
                     if (err) throw err;
                     else Session.set('mainArticle', article);

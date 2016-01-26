@@ -78,6 +78,7 @@ if (Meteor.isClient) {
             var articleID = e.target.attributes[0].nodeValue;
             var style = e.target.attributes[2].nodeValue;
             if(style.indexOf('grey') >=0){
+                $('#'+ articleID +'.feed-heart').css({'color':'red'});
                 Meteor.call('likeArticle', articleID, function (err, result) {
                     if (err) {
                         throw err;
@@ -87,6 +88,7 @@ if (Meteor.isClient) {
                     }
                 });
             }else{
+                $('#'+ articleID +'.feed-heart').css({'color':'grey'});
                 Meteor.call('unlikeArticle', articleID, function (err, result) {
                     if (err) console.log(err);
                     else Session.set('suggestedArticles', result.slice(0,25));
