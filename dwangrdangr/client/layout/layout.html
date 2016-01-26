@@ -1,6 +1,10 @@
 <template name="layout">
-{{>navigation}}
-  <div class="container">
-    {{>yield}}
-  </div>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    {{>navigation}}
+    <a id="crane-nav" style="text-decoration:none;"> PAPER <img id="small-crane"
+             src="/nobackgroundwhitegood.png"
+             alt="Paper Crane"> CRANE</a>
+    <div class="container page-contents">
+        {{>yield}}
+    </div>
 </template>

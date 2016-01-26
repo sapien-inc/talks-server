@@ -1,16 +1,19 @@
 if (Meteor.isClient) {
 
-  (function () {
+    (function () {
 
-    $(document).on('click', '#search-button', function (e) {
-      var searchVal = $('#search-text')[0].value;
-      Meteor.call('searchArticles', searchVal, function(err,res){
-        console.log(err)
-        console.log(res);
-      })
-    })
-
-  })();
+        $(document).on('submit', '#searchForm', function (e) {
+            e.preventDefault()
+            var searchVal = $('#search')[0].value;
+            Meteor.call('searchArticles', searchVal, function (err, res) {
+                if (err) throw  err;
+                Session.set('searchTerm',"Search: "+ searchVal);
+                Session.set('searchResults', res);
+                $('#search')[0].value = "";
+                Router.go('/results/any/'+searchVal, {searchVal:searchVal});
+            })
+        })
+    })();
 
 }
 
