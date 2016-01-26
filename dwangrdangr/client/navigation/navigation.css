@@ -4,11 +4,11 @@
 }
 
 .navbar-default .navbar-nav > li > a:focus {
-    color: lightgoldenrodyellow;
+    color: white;
 }
 
 .navbar-default .navbar-nav > li > a:active {
-    color: lightgoldenrodyellow;
+    color: white;
 }
 
 .navbar-default .navbar-nav > li > a {

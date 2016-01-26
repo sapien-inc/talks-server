@@ -163,6 +163,11 @@
     left:35%;
 }
 
+.news-feed-trend:hover {
+    background-color: DarkCyan;
+    color:whitesmoke;
+}
+
 .news-feed-trend{
     font-size:40px;
     margin-left:15px;
