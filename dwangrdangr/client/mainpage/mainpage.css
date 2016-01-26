@@ -41,7 +41,7 @@
     font-family: 'Playfair Display', serif;
     position: relative;
     left: -39%;
-    top: 16px;
+    top: 12%;
     font-size: 25px;
 }
 
@@ -65,7 +65,7 @@
 #suggested-container{
     position:static;
     width: 20%;
-    height:70%;
+    height:100%;
     top: 5%;
     overflow-x: visible;
     overflow-y: scroll;
@@ -111,6 +111,7 @@
 .wrapper {
     position:relative;
     top:5%;
+    height:80%
 }
 
 #news-feed-header {
