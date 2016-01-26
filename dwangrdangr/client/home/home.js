@@ -42,6 +42,9 @@ if (Meteor.isClient) {
             if (pass != repeatPassword) {
                 alert("Your repeated password did not match your original.")
             }
+            else if (pass.length < 6){
+                alert("Your password must be at least six characters long.")
+            }
             else {
                 Accounts.createUser({
                     username: name,
