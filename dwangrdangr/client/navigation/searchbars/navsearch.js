@@ -9,6 +9,7 @@ if (Meteor.isClient) {
                 if (err) throw  err;
                 Session.set('searchTerm',"Search: "+ searchVal);
                 Session.set('searchResults', res);
+                $('#search')[0].value = "";
                 Router.go('/results/any/'+searchVal, {searchVal:searchVal});
             })
         })

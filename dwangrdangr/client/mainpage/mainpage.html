@@ -10,7 +10,7 @@
         {{>trending}}
         {{>hotSites}}
     {{else}}
-        <h2 id="not-authorized">You must sign in, in order to view this page.</h2>
+        <h2 id="not-authorized">You must sign in to view this page.</h2>
     {{/if}}
 </template>
 
@@ -45,7 +45,7 @@
         {{/each}}
     </ul>
     <ul id="topics-container-2" class="list-inline">
-        {{#each trending_topics}}
+        {{#each trending_topics2}}
             <li class="list-group-item news-feed-trend trending-topic" value="{{this.topic}}"> #{{this.topic}} </li>
         {{/each}}
     </ul>

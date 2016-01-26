@@ -84,3 +84,8 @@
 #profile-top{
     height:100%;
 }
+
+.missing-content {
+    color:#333333;
+    font-size: 100%;
+}
