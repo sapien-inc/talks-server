@@ -9,7 +9,9 @@
 .list-group-tops{
     width: 100%;
     position:absolute;
-    top:30%;
+    top:25%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #profile-article-list{
