@@ -4,11 +4,15 @@
 }
 
 .navbar-default .navbar-nav > li > a:focus {
-    color: grey;
+    color: lightgoldenrodyellow;
 }
 
 .navbar-default .navbar-nav > li > a:active {
-    color: grey;
+    color: lightgoldenrodyellow;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
 }
 
 .navbar-default .navbar-nav > li {
@@ -17,7 +21,7 @@
 }
 
 .navbar {
-    color: grey;
+    color: black;
     border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     margin-bottom: 0px;
@@ -38,7 +42,7 @@
 }
 
 .navbar-default {
-    background-color: #333333;
+    background-color: DarkCyan;
 }
 
 .form-control {
@@ -60,14 +64,6 @@
     cursor: pointer;
     font-size: 11.5px;
     text-align: center;
-}
-
-#crane-nav {
-    left: 0%;
-    top: 25%;
-    height: 30px;
-    width: 30px;
-    position: absolute;
 }
 
 .crane-line > a {

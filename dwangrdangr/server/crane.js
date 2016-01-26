@@ -149,7 +149,8 @@ Meteor.methods({
     searchArticles: function (term) {
         var articles = getArticlesByTerm(term);
         var article = appendLikes(articles, Meteor.userId());
-        return articles;
+        articles = sortArticles(Meteor.userId(), articles);
+        return articles.slice(0,100);
     },
 
     searchByAuthors: function (authors) {

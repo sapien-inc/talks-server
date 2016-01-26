@@ -5,7 +5,7 @@ getArticlesByAuthors = function(authors){
     authors.forEach(function (author) {
         var regex = "(.?)" + author + "(.?)";
         var options = "ims";
-        var authorMatches = Articles.find({authors: {$regex:regex,$options:options}}).fetch();
+        var authorMatches = Articles.find({authors: {$regex:regex,$options:options}},{limit:50}).fetch();
         authorMatches.forEach(function (article) {
             matches.push(article)
         });
@@ -14,7 +14,7 @@ getArticlesByAuthors = function(authors){
 };
 
 getArticlesBySource = function(source){
-    var sourceMatches = Articles.find({source:source}).fetch();
+    var sourceMatches = Articles.find({source:source},{limit:50}).fetch();
     return cleanDuplicates(sourceMatches);
 };
 
@@ -23,7 +23,7 @@ getArticlesByKeywords = function (keywords) {
     keywords.forEach(function (keyword) {
         var regex = "(.?)" + keyword + "(.?)";
         var options = "ims";
-        var keywordMatches = Articles.find({keywords: {$regex: regex, $options: options}}).fetch();
+        var keywordMatches = Articles.find({keywords: {$regex: regex, $options: options}},{limit:50}).fetch();
         keywordMatches.forEach(function (article) {
             matches.push(article)
         });
@@ -42,17 +42,15 @@ getArticlesByTerm = function (term) {
     words.forEach(function (word) {
         var regex = "(.?)" + word + "(.?)";
         var options = "ims";
-        var titleMatches = Articles.find({title: {$regex: regex, $options: options}}).fetch();
-        var authorMatches = Articles.find({authors: {$regex: regex, $options: options}}).fetch();
-        var keyWordMatches = Articles.find({keywords: {$regex: regex, $options: options}}).fetch();
-        var sourceMatches = Articles.find({source: {$regex: regex, $options: options}}).fetch();
-        var htmlMatches = Articles.find({html: {$regex: regex, $options: options}}).fetch();
+        var titleMatches = Articles.find({title: {$regex: regex, $options: options}},{limit:50}).fetch();
+        var authorMatches = Articles.find({authors: {$regex: regex, $options: options}},{limit:50}).fetch();
+        var keyWordMatches = Articles.find({keywords: {$regex: regex, $options: options}},{limit:50}).fetch();
+        var sourceMatches = Articles.find({source: {$regex: regex, $options: options}},{limit:50}).fetch();
 
         matchArrays.push(titleMatches);
         matchArrays.push(authorMatches);
         matchArrays.push(keyWordMatches);
         matchArrays.push(sourceMatches);
-        matchArrays.push(htmlMatches);
 
     });
 
@@ -76,7 +74,7 @@ cleanDuplicates = function(articles) {
             cleanedArticles.push(article)
         }
     });
-    return cleanedArticles;
+    return cleanedArticles.slice(0,50);
 };
 
 
