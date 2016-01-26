@@ -7,3 +7,16 @@ html, body {
 body {
     background-color: #Dcdcdc;
 }
+
+#crane-nav {
+    font-family: 'Playfair Display', serif;
+    color:white;
+    left: 45%;
+    top: 2%;
+    position: absolute;
+}
+
+#small-crane {
+    height:30px;
+    width:30px;
+}

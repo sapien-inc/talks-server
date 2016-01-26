@@ -1,9 +1,10 @@
 if (Meteor.isClient) {
 
-    Template.home.rendered = function(){
-        console.log(Meteor.user());
-        if(Meteor.user()) Router.go('/mainpage');
-    };
+    Template.home.helpers({
+        mainpage_route: function () {
+            Router.go('/mainpage');
+        }
+    });
 
     (function () {
 

@@ -9,9 +9,8 @@ if (Meteor.isClient) {
     var currentSearch = Router.current().params.search;
     var searchType = Router.current().params.type;
 
-    currentSearch = currentSearch.replace("-", " ");
-
     if (searchType == 'any') {
+      currentSearch = currentSearch.replace("-", " ");
       Meteor.call('searchArticles', currentSearch, function (err, res) {
         if (err) throw  err;
           Session.set('searchTerm', "Search: " + currentSearch);
@@ -28,7 +27,14 @@ if (Meteor.isClient) {
     }
 
     else if (searchType == 'authors') {
-      Meteor.call('searchByAuthors', currentSearch, function (err, res) {
+      currentSearch = currentSearch.replace("-", " ");
+      var authors = currentSearch.split(" ");
+      var authorsConcat = [];
+      for(var i = 0; i+1 < authors.length; i+=2){
+        authorsConcat.push(authors[i] + " " + authors[i+1]);
+      }
+
+      Meteor.call('searchByAuthors', authorsConcat, function (err, res) {
         if (err) throw  err;
         Session.set('searchResults', res);
         Session.set('searchTerm',"Author(s): "+ currentSearch);
@@ -36,7 +42,9 @@ if (Meteor.isClient) {
     }
 
     else if (searchType == 'topic') {
-      Meteor.call('searchByKeywords', currentSearch, function (err, res) {
+      currentSearch = currentSearch.replace("-", " ");
+      var topics = currentSearch.split(" ");
+      Meteor.call('searchByKeywords', topics, function (err, res) {
         if (err) throw  err;
         Session.set('searchResults', res);
         Session.set('searchTerm',"Topics: "+ currentSearch);

@@ -16,7 +16,7 @@
     cursor: pointer;
     margin-top: 5px;
     border-bottom-left-radius: 10px;
-    border: 0px;
+    border: 1px;
     /*float: left;*/
 }
 
@@ -40,9 +40,9 @@
 #suggested-header {
     font-family: 'Playfair Display', serif;
     position: relative;
-    left: -40%;
-    top: 10px;
-    font-size: 40px;
+    left: -39%;
+    top: 16px;
+    font-size: 25px;
 }
 
 .feed-heart{
@@ -79,6 +79,8 @@
     /*position:relative;*/
     left:-59%;
     text-align: left;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .tooltip{
@@ -120,14 +122,20 @@
 
 #topics-container {
     position:absolute;
-    top:45%;
+    top:29%;
+    left:28%;
+}
+
+#topics-container-2 {
+    position:absolute;
+    top:44%;
     left:28%;
 }
 
 #trending-topics-header{
-    font-size: 30px;
+    font-size: 25px;
     position:absolute;
-    top:30%;
+    top:14%;
     width: 50%;
     left:35%;
 }
@@ -147,7 +155,7 @@
 }
 
 #hot-sites-header{
-    font-size: 30px;
+    font-size: 25px;
     position:absolute;
     top:60%;
     width: 50%;
@@ -157,7 +165,7 @@
 .news-feed-trend{
     font-size:40px;
     margin-left:15px;
-    border-radius: 0px;
+    border-radius: 5px;
     width:145px;
     height:65px;
     line-height:45px;
@@ -171,31 +179,33 @@
     border-width: 0px;
     border-color: #black;
 
-    background-color: 	#87CEFA;
-    /* For WebKit (Safari, Chrome, etc) */
-    background: 	#87CEFA -webkit-gradient(linear, left top, left bottom, from(#F0F8FF), to(	#87CEFA)) no-repeat;
-    /* Mozilla,Firefox/Gecko */
-    background: 	#87CEFA -moz-linear-gradient(top, #F0F8FF, 	#87CEFA) no-repeat;
-    /* IE 5.5 - 7 */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F0F8FF, endColorstr=	#87CEFA) no-repeat;
-    /* IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00E4FF, endColorstr=#00E4FF)" no-repeat;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    background-color: 	#d1e0e0 ;
+    /*/!* For WebKit (Safari, Chrome, etc) *!/*/
+    /*background: 	#d1e0e0 -webkit-gradient(linear, left top, left bottom, from(#F0F8FF), to(	#d1e0e0)) no-repeat;*/
+    /*/!* Mozilla,Firefox/Gecko *!/*/
+    /*background: 	#d1e0e0 -moz-linear-gradient(top, #F0F8FF, 	#d1e0e0) no-repeat;*/
+    /*/!* IE 5.5 - 7 *!/*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F0F8FF, endColorstr=	#d1e0e0) no-repeat;*/
+    /*/!* IE 8 *!/*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00E4FF, endColorstr=#00E4FF)" no-repeat;*/
 }
 
 
 .news-feed-trend:first-child {
-    border-top-right-radius: 0px !important;
-    border-top-left-radius: 0px !important;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
 }
 
 .news-feed-trend:last-child {
-    border-bottom-right-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
 }
 
 .trending-divider {
     position:absolute;
-    top: 38%;
+    top: 22%;
     width: 300px;
     left:48.5%;
 }

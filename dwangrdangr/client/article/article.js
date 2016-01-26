@@ -19,6 +19,7 @@ if (Meteor.isClient) {
                     if (err) throw  err;
                     else Session.set('moreBySource', moreBySource);
                 });
+
                 Meteor.call('searchByKeywords', article.keywords, function (err, moreByKeyWord) {
                     if (err) throw  err;
                     else Session.set('moreByKeyword', moreByKeyWord);
@@ -80,6 +81,11 @@ if (Meteor.isClient) {
             if (article.liked)
                 color = "red";
             return color;
+        },
+
+        url: function () {
+            var article = Session.get('mainArticle');
+            return article.url;
         }
     });
 

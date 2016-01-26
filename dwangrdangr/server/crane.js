@@ -134,11 +134,11 @@ Meteor.methods({
     getArticleById: function (articleId) {
 
         // drew
-        var article = Articles.findOne({_id: articleId});
+        //var article = Articles.findOne({_id: articleId});
 
         //harry
-        //var objId = new Mongo.ObjectID(articleId);
-        //var article = Articles.findOne({_id: objId});
+        var objId = new Mongo.ObjectID(articleId);
+        var article = Articles.findOne({_id: objId});
 
         var articles = [article];
         articles = appendLikes(articles, Meteor.userId());
@@ -149,7 +149,8 @@ Meteor.methods({
     searchArticles: function (term) {
         var articles = getArticlesByTerm(term);
         var article = appendLikes(articles, Meteor.userId());
-        return articles;
+        articles = sortArticles(Meteor.userId(), articles);
+        return articles.slice(0,100);
     },
 
     searchByAuthors: function (authors) {

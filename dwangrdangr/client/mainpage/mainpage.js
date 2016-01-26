@@ -3,7 +3,7 @@ if (Meteor.isClient) {
     //Current = new Meteor.Collection('current');
 
 
-    Tracker.autorun(function () {
+    Template.mainpage.rendered = function () {
         //Meteor.subscribe('current');
 
         Meteor.call('getSortedArticles', function (err, res) {
@@ -28,11 +28,10 @@ if (Meteor.isClient) {
               Session.set('hotSites', res);
           }
         );
-    });
+    };
 
     Template.trending.helpers({
         trending_topics: function(){
-            console.log(Session.get('hotTopics'));
             return Session.get('hotTopics').splice(0,5);
         }
     });
@@ -140,6 +139,8 @@ if (Meteor.isClient) {
 
         $(document).on('click', '.trending-topic', function (e) {
             var searchQuery = e.target.innerText.toLowerCase();
+            var len = searchQuery.length;
+            searchQuery = searchQuery.slice(1,len);
 
             Meteor.call('searchByKeywords', [searchQuery], function (err, res) {
                 if (err) throw  err;

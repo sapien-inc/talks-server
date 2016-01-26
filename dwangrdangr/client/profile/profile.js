@@ -78,13 +78,34 @@ if (Meteor.isClient) {
     });
 
     (function () {
-        $(document).on('click', '.panel-top', function (e) {
-            var target = e.target;
-            var child = target.firstChild;
-            var head = child.nextSibling;
-            var search = head.innerText;
-            Session.set('searchTerm', search)
-            Router.go('/results/' + search);
+        $(document).on('click', '.top-topic-box', function (e) {
+            var search = e.target.innerText.trim();
+            Meteor.call('searchByKeywords', [search], function (err, res) {
+                if (err) throw  err;
+                Session.set('searchResults', res);
+                Session.set('searchTerm',"Topic: "+ search);
+                Router.go('/results/' + 'topic/' + search, {searchVal:search});
+            })
+        });
+
+        $(document).on('click', '.top-source-box', function (e) {
+            var search = e.target.innerText.trim();
+            Meteor.call('searchBySource', search, function (err, res) {
+                if (err) throw  err;
+                Session.set('searchResults', res);
+                Session.set('searchTerm',"Source: "+ search);
+                Router.go('/results/' + 'source/' + search, {searchVal:search});
+            })
+        });
+
+        $(document).on('click', '.top-author-box', function (e) {
+            var search = e.target.innerText.trim();
+            Meteor.call('searchByAuthors', [search], function (err, res) {
+                if (err) throw  err;
+                Session.set('searchResults', res);
+                Session.set('searchTerm',"Author: "+ search);
+                Router.go('/results/' + 'author/' + search, {searchVal:search});
+            })
         });
 
         $(document).on('click', '.feed-heart', function (e) {
@@ -114,23 +135,20 @@ if (Meteor.isClient) {
         });
 
 
-        $(document).on('click', '.list-group-item', function (e) {
+        $(document).on('click', '.liked-articles-profile', function (e) {
             // Get rid of any and all other active list-group-items
             //$('.list-group .active').removeClass('active');
 
             // Add the active class to this item
             //$(this).addClass("active");
 
-            console.log($(this));
-
             var id = $(this)[0].id;
 
             Meteor.call('getArticleById', id, function (err, res) {
                 if(err) throw err;
-                console.log(res);
-                Router.go('/article/' + id);
                 Session.set('mainArticle', res);
             });
+            Router.go('/article/'+id, {articleId:id});
         });
     })();
 
