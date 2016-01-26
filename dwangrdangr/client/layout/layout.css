@@ -10,13 +10,18 @@ body {
 
 #crane-nav {
     font-family: 'Playfair Display', serif;
-    color:white;
+    color: white;
     left: 45%;
     top: 2%;
     position: absolute;
+    width: 60%;
 }
 
 #small-crane {
     height:5%;
     width:5%;
+}
+
+.page-contents{
+    height: 85%;
 }

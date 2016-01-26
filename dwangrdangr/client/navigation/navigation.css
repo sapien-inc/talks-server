@@ -29,7 +29,11 @@
     background-color: #333333;
     border-color: transparent;
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    height: 20px;
+    height: 5%;
+    position: fixed;
+    top:0%;
+    left:0%;
+    width: 100%;
 }
 
 .navbar-default .navbar-left {
