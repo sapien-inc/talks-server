@@ -39,7 +39,7 @@ p.about-text {
     display: block;
     height: 100%;
     width: 100%;
-
+    top:10%;
     left: 0px;
     color: black;
     font-family: 'Lora', serif;
