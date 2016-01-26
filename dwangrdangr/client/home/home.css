@@ -1,20 +1,20 @@
 h1 {
   text-shadow: white 0px 0px 2px;
-  line-height: 50px;
+  line-height: 49px;
   position: absolute;
   left: 40%;
   top: 27.5%;
   text-align: center;
   font-size: 420%;
   font-family: 'Playfair Display', serif;
-  width: 20%;
+  width: 250px;
   color: black;
 }
 
 #home-slogan {
   font-size: 100%;
   position: relative;
-  top: 44%;
+  top: 42%;
 }
 
 #crane {
@@ -29,15 +29,13 @@ h1 {
   /*background-size: 100%;*/
   position: absolute;
   display: block;
-  height: 85%;
+  height: 100%;
   width: 100%;
-  top: 5%;
+
   left: 0px;
 }
 
 .form-signin {
-  position:relative;
-  top:15%;
   max-width: 100%;
   padding: 15px;
   margin: 0 auto;
@@ -61,6 +59,11 @@ h1 {
 .form-signin .form-control:focus {
   z-index: 2;
 }
+.form-signin input[type="password"] {
+  margin-bottom: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 
 .form-signin input[type="text"] {
   margin-bottom: -1px;
@@ -69,7 +72,7 @@ h1 {
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 1px;
+  margin-bottom: 8px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -83,7 +86,7 @@ h1 {
 
 .new-account {
   display: block;
-  margin-top: 5%;
+  margin-top: 10px;
   color: grey;
 }
 
@@ -119,4 +122,5 @@ h1 {
   border-color: black;
   box-shadow: 0px 0px 9px whitesmoke;
 }
+
 
