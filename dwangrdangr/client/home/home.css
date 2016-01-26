@@ -14,7 +14,7 @@ h1 {
 #home-slogan {
   font-size: 100%;
   position: relative;
-  top: 42%;
+  top: 45%;
 }
 
 #crane {
@@ -93,12 +93,12 @@ h1 {
 
 #login-container {
   position: relative;
-  top: 38%;
+  top: 40%;
 }
 
 #signup-container {
   position: relative;
-  top: 0%;
+  top: 12%;
   visibility: hidden;
 }
 
