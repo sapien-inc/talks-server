@@ -61,9 +61,12 @@ h5.more{
 }
 
 .article-heart{
-    float: left;
-    font-size: 25px;
+    position: absolute;
+    left: 5%;
+    top:50%;
+    font-size: 40px;
     cursor:pointer;
+    text-decoration:none;
 }
 
 #more-articles-container{
