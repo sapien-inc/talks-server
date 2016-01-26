@@ -141,7 +141,8 @@ Meteor.methods({
         var article = Articles.findOne({_id: objId});
 
         var articles = [article];
-        articles = appendLikes(articles, Meteor.userId());
+        if(Meteor.userId())
+            articles = appendLikes(articles, Meteor.userId());
         return articles[0];
     },
 

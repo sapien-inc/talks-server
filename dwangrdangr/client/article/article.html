@@ -35,9 +35,11 @@
 <template name="display">
     <a href="{{url}}">Article not displaying properly?</a>
     <h1 class="article-title">{{title}}</h1>
-    <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart article-heart"
-       style="color:{{buttonStyle this._id.valueOf}}; text-decoration:none;">
-    </a>
+    {{#if currentUser}}
+        <a value="{{this._id.valueOf}}" class="glyphicon glyphicon-heart article-heart"
+           style="color:{{buttonStyle this._id.valueOf}}; text-decoration:none;">
+        </a>
+    {{/if}}
     <h3 class="article-author">{{author}}</h3>
     <h4 class="article-source">{{source}}</h4>
     <p class="article-body" align="justify">
