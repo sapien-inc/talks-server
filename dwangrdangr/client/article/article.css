@@ -65,9 +65,8 @@ h5.more:hover{
 }
 
 .article-heart{
-    position: absolute;
-    left: 5%;
-    top:50%;
+    position: relative;
+    left:39%;
     font-size: 40px;
     cursor:pointer;
     text-decoration:none;

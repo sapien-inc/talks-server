@@ -51,7 +51,7 @@ def sumy(article):
 def badArticle(article):
 	html = article.html
 	title = article.title
-	return html == "" or title == "" or title == "Error" or title == "404 Not Found"
+	return len(html) < 500 or title == "" or title == "Error" or title == "404 Not Found"
 
 def scrapeArticle(article):
 	try:
@@ -60,19 +60,17 @@ def scrapeArticle(article):
 		article.nlp()
 		summary = article.summary
 		keywords = article.keywords
-		if badArticle(article):
-			print("error")
-			return
-		mongoHash = {
-			"source" : article.source,
-			"url" : article.url,
-			"authors": article.authors,
-			"title": article.title,
-			"html": article.article_html,
-			"summary": summary,
-			"keywords": keywords
-		}
-		database.articles.insert(mongoHash)
+		if !badArticle(article):
+			mongoHash = {
+				"source" : article.source,
+				"url" : article.url,
+				"authors": article.authors,
+				"title": article.title,
+				"html": article.article_html,
+				"summary": summary,
+				"keywords": keywords
+			}
+			database.articles.insert(mongoHash)
 	except:
 		print('unexpected error')
 

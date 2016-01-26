@@ -9,6 +9,10 @@ h2 {
     color: black;
 }
 
+.about-header {
+    font-size:300%;
+}
+
 .about-hr {
     position: relative;
     top: 7%;
@@ -27,11 +31,11 @@ p.about-text {
 }
 
 #about-container {
-    font-size: 16px;
+    font-size: 120%;
     /*background:  url('/dawn.jpg') no-repeat left top;*/
     /*background-size: 100%;*/
 
-    position: absolute;
+    position: relative;
     display: block;
     height: 100%;
     width: 100%;
@@ -40,4 +44,21 @@ p.about-text {
     color: black;
     font-family: 'Lora', serif;
 
+}
+
+.about-shot{
+    position:absolute;
+    bottom: 15%;
+}
+
+#harry {
+    left:44%;
+}
+
+#scott {
+    left: 76%;
+}
+
+#drew {
+    left:12%;
 }
