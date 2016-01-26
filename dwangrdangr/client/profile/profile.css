@@ -14,7 +14,7 @@
 
 #profile-article-list{
     position:absolute;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 300%;
     width: 80%;
     left:30%;
@@ -22,7 +22,7 @@
 }
 
 .top-row{
-    overflow-x: scroll;
+    /*overflow-y: scroll;*/
 }
 
 .top-list-box{
