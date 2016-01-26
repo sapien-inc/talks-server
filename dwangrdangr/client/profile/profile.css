@@ -10,6 +10,7 @@
     width: 100%;
     position:absolute;
     top:25%;
+    height:125%;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -17,7 +18,7 @@
 #profile-article-list{
     position:absolute;
     overflow-y: scroll;
-    height: 300%;
+    height: 125%;
     width: 80%;
     left:30%;
     top:25%;
@@ -34,7 +35,7 @@
 .liked-articles-contianer{
     width: inherit;
     position:absolute;
-    height:130%;
+    height:110%;
 }
 
 .profile-header{
