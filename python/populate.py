@@ -32,21 +32,6 @@ for url in urls:
 			articles.append(article)
 	except:
 		print(url);
-
-def sumy(article):
-	try:
-		parser = HtmlParser.from_url(article.url, Tokenizer(LANGUAGE))
-		stemmer = Stemmer(LANGUAGE)
-		summarizer = Summarizer(stemmer)
-		summarizer.stop_words = get_stop_words(LANGUAGE)
-		returnString = ""
-		for sentence in summarizer(parser.document, SENTENCES_COUNT):
-			sentenceString = str(sentence);
-			returnString += " ";
-			returnString += (sentenceString);
-		return returnString
-	except:
-		return "No summary available for this article."
 	
 def badArticle(article):
 	html = article.html
@@ -60,7 +45,7 @@ def scrapeArticle(article):
 		article.nlp()
 		summary = article.summary
 		keywords = article.keywords
-		if !badArticle(article):
+		if not badArticle(article):
 			mongoHash = {
 				"source" : article.source,
 				"url" : article.url,

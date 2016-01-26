@@ -33,6 +33,10 @@ if (Meteor.isClient) {
     Template.trending.helpers({
         trending_topics: function(){
             return Session.get('hotTopics').splice(0,5);
+        },
+
+        trending_topics2: function(){
+            return Session.get('hotTopics').splice(5,10);
         }
     });
 
