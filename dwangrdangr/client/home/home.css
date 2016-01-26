@@ -20,7 +20,7 @@ h1 {
 #crane {
   position: absolute;
   left: 44.5%;
-  top: 15%
+  top: 13%
 }
 
 #homescreen {
@@ -98,7 +98,7 @@ h1 {
 
 #signup-container {
   position: relative;
-  top: 12%;
+  top: 4%;
   visibility: hidden;
 }
 
