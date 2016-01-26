@@ -33,6 +33,13 @@ Meteor.methods({
         if (!trending){
             return [];
         }
+        // Bug from scraping the google API...
+        // noticed it late and don't have time to re-upload the database.
+        trending.forEach(function(trend){
+            if (trend.topic == 'hilary'){
+                trend.topic = 'hillary';
+            };
+        });
         return trending;
     },
 
