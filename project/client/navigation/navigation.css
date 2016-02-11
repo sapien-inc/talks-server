@@ -1,0 +1,77 @@
+.navbar-default .navbar-nav > li > a:hover {
+    border-bottom-color: #269abc;
+    color: lightgoldenrodyellow;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:active {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li {
+    position: relative;
+    top: 25%;
+}
+
+.navbar {
+    color: black;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    margin-bottom: 0px;
+    /*background:  url('/beige.jpg') no-repeat left top;*/
+    background-color: #333333;
+    border-color: transparent;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 5%;
+    position: absolute;
+    top:0%;
+    left:0%;
+    width: 100%;
+}
+
+.navbar-default .navbar-left {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.navbar-default .navbar-right {
+    padding-right: 40px;
+}
+
+.navbar-default {
+    background-color: DarkCyan;
+}
+
+.form-control {
+    padding: 20px 20px;
+    margin-bottom: 10px;
+}
+
+#username {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background-color: ghostwhite;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+.dropdown-menu > li > a {
+    cursor: pointer;
+    font-size: 11.5px;
+    text-align: center;
+}
+
+.crane-line > a {
+    top: 100%;
+    margin-bottom: 25px;
+}
+

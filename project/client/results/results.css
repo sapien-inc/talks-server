@@ -1,0 +1,24 @@
+h5{
+  font-size:150%;
+  color:#333333;
+  font-family:	"Courier New", Courier, monospace;
+}
+
+.panel-title{
+  font-size: 103%;
+  margin:5px;
+}
+
+.panel-article{
+  width: 80%
+}
+
+.search-source-header{
+  font-size: 75%;
+}
+
+#results-container{
+  position:absolute;
+  top:9%;
+  left:13%;
+}
