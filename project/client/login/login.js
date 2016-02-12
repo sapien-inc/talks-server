@@ -2,11 +2,11 @@ if (Meteor.isClient) {
 
     Template.home.helpers({
         mainpage_route: function () {
-            Router.go('/mainpage');
+            Router.go('/');//TODO figure out what home screen should be
         }
     });
-
-    (function () {
+    
+     (function () {
 
         $(document).on('click', '#new-account', function (e) {
             document.getElementById("login-container").style.visibility = "hidden";
@@ -60,10 +60,19 @@ if (Meteor.isClient) {
                     }
                     else {
                         document.getElementById("signup-container").style.visibility = "hidden";
-                        Meteor.call('notifyUserRegister', function (err) {
+                        var rad_learner = document.getElementById("type-learner");
+                        var rad_assit = document.getElementById("type-assistant");
+                        var rad_talker = document.getElementById("type-talker");
+                        
+                        var type = 'learner';
+                        if(rad_assit.checked) type = 'assistant';
+                        if(rad_talker.checked) type = 'talker';
+                        if(rad_learner.checked) type = 'learner';
+                        
+                        Meteor.call('createAccountModel',type, function (err) {
                             if (err) throw err;
                         })
-                        Router.go('/mainpage')
+                        Router.go('/') //TODO descide what home page will be
                     }
                 })
             }

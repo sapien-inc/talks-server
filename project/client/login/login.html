@@ -1,12 +1,12 @@
-<template name="home">
-    {{#if currentUser}}
-        {{mainpage_route}}
+<template name="login">
+	{{#if currentUser}}
+        {{home_route}}
     {{else}}
     <div id="homescreen" class="container">
         <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
-        <img id="crane" src="crane.png" alt="Paper Crane" style="width:9%;height:14%;">
-        <h1>PAPER CRANE</h1>
-        <h1 id="home-slogan">News that learns with you</h1>
+<!--         <img id="crane" src="crane.png" alt="Paper Crane" style="width:9%;height:14%;"> -->
+        <h1>Sapien Talks</h1>
+        <h1 id="home-slogan">insert slogan here</h1>
         {{#unless currentUser}}
             <div id="login-container" class="container">
                 <div class="row">
@@ -28,6 +28,9 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-4 col-md-offset-4">
                         <form id="form-register" class="form-signin">
+                        	<label class="radio-inline"><input type="radio" id="type-learner" name="optradio">Learner</label>
+							<label class="radio-inline"><input type="radio" id="type-assistant" name="optradio">Learning Assistant</label>
+                            <label class="radio-inline"><input type="radio" id="type-talker" name="optradio">Talker</label>
                             <input id="register-username" type="text" class="form-control" placeholder="Username"
                                    required autofocus>
                             <input id="register-password" type="password" class="form-control" placeholder="Password"
