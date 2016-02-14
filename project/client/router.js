@@ -2,8 +2,9 @@ Router.configure({
     layoutTemplate: 'layout'
 });
 Router.map(function () {
-    this.route('about', {path: '/about'});
-    this.route('home', {path: '/'});
+	this.route('login', {path: '/login'});
+	this.route('home', {path: '/'});
+	
     this.route('mainpage', {path: '/mainpage'});
     this.route('profile', {path: '/profile'});
     this.route('results', {path: '/results/:type/:search', data:function(){
