@@ -1,0 +1,64 @@
+<template name="home">
+    {{#if currentUser}}
+        <div class="left-side">
+            {{>global_talks}}
+        </div>
+        <div class="right-side">
+            {{>personal_talks}}
+        </div>
+    {{else}}
+        {{login_route}}
+    {{/if}}
+</template>
+
+<template name="global_talks">
+    <div class="wrapper">
+        <h2 id="global-header">Talks</h2>
+        <div id="suggested-container" class="list-group">
+            {{#each talk_list}}
+                <div class="list-group-box"
+                     data-toggle="tooltip" data-placement="right" title="{{this.description}}">
+                    <div class="list-group-item suggested-article">
+                        <h4 class="list-group-item-heading">{{this.talker}}</h4>
+                        <p class="list-group-item-text">{{this.start_time}}</p>
+                        <p class="list-group-item-text">{{this.end_time}}</p>
+                        <p class="list-group-item-text">Learners:{{this.learners.length}}</p>
+                        <p class="list-group-item-text">Learning Assistants:{{this.assistants.length}}</p>
+                        <a id="{{this._id.valueOf}}" class="global-talk-button">{{button_text}}</a>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="personal_talks">
+    <div class="wrapper">
+        <h2 id="subscibed-header">Subscribed</h2>
+        <div id="suggested-container" class="list-group">
+            {{#each talk_list}}
+                <div class="list-group-box"
+                     data-toggle="tooltip" data-placement="right" title="{{this.description}}">
+                    <div class="list-group-item suggested-article">
+                        <h4 class="list-group-item-heading">{{this.talker}}</h4>
+                        <p class="list-group-item-text">{{this.start_time}}</p>
+                        <p class="list-group-item-text">{{this.end_time}}</p>
+                        <p class="list-group-item-text">Learners:{{this.learners.length}}</p>
+                        <p class="list-group-item-text">Learning Assistants:{{this.assistants.length}}</p>
+                        <a id="{{this._id.valueOf}}" class="personal-talk-button">{{button_text}}</a>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>
+            {{/each}}
+        </div>
+    </div>
+</template>

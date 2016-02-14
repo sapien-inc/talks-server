@@ -1,4 +1,4 @@
-Learners  = new Mongo.collection('learners');
+Learners  = new Mongo.Collection('learners');
 
 initLearner = function(userID){
 	var learner = {user:userID}

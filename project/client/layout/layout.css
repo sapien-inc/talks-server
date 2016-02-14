@@ -23,5 +23,9 @@ body {
 }
 
 .page-contents{
+    position: absolute;
     height: 85%;
+    left:20%;
+    width:60%;
+    top:15%;
 }

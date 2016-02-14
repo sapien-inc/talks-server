@@ -1,7 +1,8 @@
 if (Meteor.isClient) {
 
-    Template.home.helpers({
-        mainpage_route: function () {
+    Template.login.helpers({
+        home_route: function () {
+            console.log("home route");
             Router.go('/');//TODO figure out what home screen should be
         }
     });
@@ -28,7 +29,7 @@ if (Meteor.isClient) {
                 }
                 else {
                     document.getElementById("login-container").style.visibility = "hidden";
-                    Router.go('/mainpage')
+                    Router.go('/')
                 }
             });
 
@@ -46,9 +47,18 @@ if (Meteor.isClient) {
                 alert("Your password must be at least six characters long.")
             }
             else {
+                var rad_learner = document.getElementById("type-learner");
+                var rad_assit = document.getElementById("type-assistant");
+                var rad_talker = document.getElementById("type-talker");
+
+                var type = 'learner';
+                if(rad_assit.checked) type = 'assistant';
+                if(rad_talker.checked) type = 'talker';
+                if(rad_learner.checked) type = 'learner';
                 Accounts.createUser({
                     username: name,
-                    password: pass
+                    password: pass,
+                    profile: {type:type}
                 }, function (err) {
                     if (err) {
                         if (err.error == 403) {
@@ -60,18 +70,11 @@ if (Meteor.isClient) {
                     }
                     else {
                         document.getElementById("signup-container").style.visibility = "hidden";
-                        var rad_learner = document.getElementById("type-learner");
-                        var rad_assit = document.getElementById("type-assistant");
-                        var rad_talker = document.getElementById("type-talker");
+
                         
-                        var type = 'learner';
-                        if(rad_assit.checked) type = 'assistant';
-                        if(rad_talker.checked) type = 'talker';
-                        if(rad_learner.checked) type = 'learner';
-                        
-                        Meteor.call('createAccountModel',type, function (err) {
-                            if (err) throw err;
-                        })
+                        //Meteor.call('createAccountModel',type, function (err) {
+                        //    if (err) throw err;
+                        //})
                         Router.go('/') //TODO descide what home page will be
                     }
                 })
